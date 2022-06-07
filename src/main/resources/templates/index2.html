@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org">
+	<head>
+	   <title>Pagina de inicio</title>
+	   <meta charset="UTF-8">
+	</head>
+	<body>
+	   <h1>Inicio - TH HTML</h1>
+	   <br/>
+
+		<div th:if="${personas != null and !personas.empty}">
+			<table border="1">
+				<tr>
+					<th>Nombre:</th>
+					<th>Apellido:</th>
+					<th>Documento:</th>
+				</tr>
+				
+				<tr th:each="persona : ${personas}">
+					<td th:text="${persona.nombreRazon}">Mostrar Nombre</td>
+					<td th:text="${persona.apellido}">Mostrar Apellido</td>
+					<td th:text="${persona.numeroDocumeto}">Mostrar Documento</td>
+				</tr>
+			</table>
+	   </div>
+	   <div th:if="${personas == null or personas.empty}">
+			<p>La lista de personas está vacía</p>
+		</div>
+
+
+	   <form action="cargaEmpleado" method="get">
+			<input type="submit" value="Ir a Form Empleado"/>
+		</form>
+	</body>
+</html>

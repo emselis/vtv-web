@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org">
+	<head>
+	   <meta charset="UTF-8">
+	   <title>Pagina de inicio</title>
+	   <link rel="stylesheet" href="css/normalize.css">
+	   <link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+	   <h1>Inicio - preVTV</h1>
+		<nav id="nav" class="navegacion-principal contenedor">
+			<a href="#">Inspección</a>
+			<a href="#">Listados y Consultas</a>
+			<a href="#">Administración</a>
+			
+			<ul>
+				<li><a href="#"th:href="@{/clienteBanca/}">Crear Empleado</a></li>
+				<li><a href="#"th:href="@{/tarjetaCredito/}">Crear Conductor</a></li>
+				<li><a href="#"th:href="@{/tarjetaDebito/}">Crear Propietario</a></li>
+				<li><a href="#"th:href="@{/clienteBanca/lista}">Crear Inspeccion</a></li>
+			</ul>
+		</nav> 
+
+		<br/>
+		<p th:text="${mensaje}"></p>
+		<p th:text="${saludo}"></p>
+		<br/>
+
+		<div th:if="${personas != null and !personas.empty}">
+			<table border="1">
+				<tr>
+					<th>Nombre:</th>
+					<th>Apellido:</th>
+					<th>Documento:</th>
+				</tr>
+				
+				<tr th:each="persona : ${personas}">
+					<td th:text="${persona.nombreRazon}">Mostrar Nombre</td>
+					<td th:text="${persona.apellido}">Mostrar Apellido</td>
+					<td th:text="${persona.numeroDocumeto}">Mostrar Documento</td>
+				</tr>
+			</table>
+	   </div>
+	   <div th:if="${personas == null or personas.empty}">
+			<p>La lista de personas está vacía</p>
+		</div>
+
+
+	   <form action="cargaEmpleado" method="get">
+			<input type="submit" value="Ir a Form Empleado"/>
+		</form>
+		<br/>
+	   <form action="cargaConductor" method="get">
+			<input type="submit" value="Ir a Form Conductor"/>
+		</form>
+	</body>
+</html>

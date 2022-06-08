@@ -21,23 +21,21 @@
 			</ul>
 		</nav> 
 
-		<br/>
-		<p th:text="${mensaje}"></p>
-		<p th:text="${saludo}"></p>
-		<br/>
 
 		<div th:if="${personas != null and !personas.empty}">
 			<table border="1">
 				<tr>
+					<th>Id Persona:</th>
 					<th>Nombre:</th>
 					<th>Apellido:</th>
 					<th>Documento:</th>
 				</tr>
 				
 				<tr th:each="persona : ${personas}">
-					<td th:text="${persona.nombreRazon}">Mostrar Nombre</td>
+					<td th:text="${persona.id_persona}">Mostrar Id</td>
+					<td th:text="${persona.nombre}">Mostrar Nombre</td>
 					<td th:text="${persona.apellido}">Mostrar Apellido</td>
-					<td th:text="${persona.numeroDocumeto}">Mostrar Documento</td>
+					<td th:text="${persona.documento}">Mostrar Documento</td>
 				</tr>
 			</table>
 	   </div>

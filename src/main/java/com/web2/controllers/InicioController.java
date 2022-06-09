@@ -38,14 +38,14 @@ public class InicioController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/editar/{idPersona}")	// <--- Así pasamos el IdPersona en el path
+	@GetMapping("/editar")	// <--- Acá pasamos query parameters (ver HTML)
 	public String editarPersona(Persona persona, Model model) {
 		persona=personaService.encontrarPersona(persona);
 		model.addAttribute("persona", persona);
 		return "persona/modificarPersona";
 	}
 	
-	@GetMapping("/eliminar")	// <--- Acá pasamos query parameters (ver HTML)
+	@GetMapping("/eliminar/{idPersona}")	// <--- Así pasamos el IdPersona en el path
 	public String eliminarPersona(Persona persona) {
 		personaService.eliminar(persona);
 		return "redirect:/";

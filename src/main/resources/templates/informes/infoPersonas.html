@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html xmlns:th="http//www.thymeleaf.org" xmlns"http://www.w3.org/1999/xhtml">
-   <head>
-	   <meta charset="UTF-8">
-	   <title>Pagina de inicio</title>
-	   <link rel="stylesheet" href="css/normalize.css">
-	   <link rel="stylesheet" href="css/style.css">
-	</head>
-	<body>
 
-		<dir class="centrar-texto">
-			<header th:replace="layout/plantilla :: header"></header>
-		</dir>
+<head>
+	<meta charset="UTF-8">
+	<title>Pagina de Informes</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
 
-		<div th:replace="layout/plantilla :: nav-superior"></div>
-      <br/>
-      <br/>
+<body>
+	<header th:replace="layout/plantilla :: header"></header>
 
-		<div th:if="${personas != null and !personas.empty}">
-			<table border="1">
-				<tr>
-					<th>Id Persona:</th>
-					<th>Nombre:</th>
-					<th>Apellido:</th>
-					<th>Documento:</th>
-					<th>Editar:</th>
-					<th>Eliminar:</th>
-				</tr>
-				
-				<tr th:each="persona : ${personas}">
-					<td th:text="${persona.idPersona}">Mostrar Id</td>
-					<td th:text="${persona.nombre}">Mostrar Nombre</td>
-					<td th:text="${persona.apellido}">Mostrar Apellido</td>
-					<td th:text="${persona.documento}">Mostrar Documento</td>
-					<td><a th:href="@{/editar/} + ${persona.idPersona}" th:text="Editar"/></td>
-					<td><a th:href="@{/eliminar(idPersona=${persona.idPersona})}" th:text="Eliminar"/></td>
-				</tr>
-			</table>
-	   </div>
-	   <div th:if="${personas == null or personas.empty}">
-			<p>La lista de personas está vacía</p>
-		</div>
+	<div th:replace="layout/plantilla :: nav-superior"></div>
 
-		
-		<footer th:replace="layout/plantilla :: footer"></footer>
-	</body>
+
+	<div th:if="${personas != null and !personas.empty}">
+		<table border="1">
+			<tr>
+				<th>Id Persona:</th>
+				<th>Nombre:</th>
+				<th>Apellido:</th>
+				<th>Documento:</th>
+				<th>Editar:</th>
+				<th>Eliminar:</th>
+			</tr>
+
+			<tr th:each="persona : ${personas}">
+				<td th:text="${persona.idPersona}">Mostrar Id</td>
+				<td th:text="${persona.nombre}">Mostrar Nombre</td>
+				<td th:text="${persona.apellido}">Mostrar Apellido</td>
+				<td th:text="${persona.documento}">Mostrar Documento</td>
+				<td><a th:href="@{/editar(idPersona=${persona.idPersona})}" th:text="Editar" /></td>
+				<td><a th:href="@{/eliminar/} + ${persona.idPersona}" th:text="Eliminar" /></td>
+			</tr>
+		</table>
+	</div>
+
+	<div th:if="${personas == null or personas.empty}">
+		<p>La lista de personas está vacía</p>
+	</div>
+
+
+	<footer th:replace="layout/plantilla :: footer"></footer>
+</body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http//www.thymeleaf.org" xmlns"http://www.w3.org/1999/xhtml">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Pagina de inicio</title>
@@ -8,12 +9,14 @@
 </head>
 
 <body>
-
-	<dir class="centrar-texto">
-		<header th:replace="layout/plantilla :: header"></header>
-	</dir>
+	<header th:replace="layout/plantilla :: header"></header>
 
 	<div th:replace="layout/plantilla :: nav-superior"></div>
+
+
+	<main class="site-header">
+
+	</main>
 
 	<footer th:replace="layout/plantilla :: footer"></footer>
 </body>

@@ -2,16 +2,16 @@
 <html xmlns:th="http//www.thymeleaf.org" xmlns"http://www.w3.org/1999/xhtml">
 
 <head>
-   <meta charset="UTF-8"/>
-   <title>Plantilla</title>
+	<meta charset="UTF-8">
+	<title>Plantilla</title>
 </head>
 
 <body>
-   <header th:fragment="header">
-      <h1>App de Verificacion Técnica Vehicular</h1>
-   </header>
+	<header th:fragment="header">
+		<h1>App de Verificacion Técnica Vehicular</h1>
+	</header>
 
-   <div th:fragment="nav-superior" id="navegacion" class="navegacion contenedor">
+	<div th:fragment="nav-superior" id="navegacion" class="navegacion  centrar-texto">
 		<nav id="menu">
 			<ul class="clearfix">
 				<li><a href="#" th:href="@{/}">Inicio</a></li>
@@ -36,9 +36,9 @@
 	</div>
 
 
-   <footer th:fragment="footer">
-      <p>Info footer <a href="#" target="_blank">VTV</a></p>
-   </footer>
+	<footer th:fragment="footer">
+		<p>Info footer <a href="#" target="_blank">VTV</a></p>
+	</footer>
 </body>
 
 </html>

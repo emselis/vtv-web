@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http//www.thymeleaf.org">
-	<head>
+<html xmlns:th="http//www.thymeleaf.org" xmlns"http://www.w3.org/1999/xhtml">
+   <head>
 	   <meta charset="UTF-8">
 	   <title>Pagina de inicio</title>
 	   <link rel="stylesheet" href="css/normalize.css">
@@ -8,16 +8,13 @@
 	</head>
 	<body>
 
-		<header th:replace="layout/plantilla :: header"></header>
+		<dir class="centrar-texto">
+			<header th:replace="layout/plantilla :: header"></header>
+		</dir>
 
-		<nav id="nav" class="navegacion-principal contenedor">
-			<ul>
-				<li><a href="#"th:href="@{/cargaPersona}">Crear Persona</a></li>
-				<li><a href="#"th:href="@{/cargaEmpleado}">Crear Empleado</a></li>
-				<li><a href="#"th:href="@{/cargaConductor}">Crear Conductor</a></li>
-			</ul>
-		</nav> 
-
+		<div th:replace="layout/plantilla :: nav-superior"></div>
+      <br/>
+      <br/>
 
 		<div th:if="${personas != null and !personas.empty}">
 			<table border="1">
@@ -44,15 +41,7 @@
 			<p>La lista de personas está vacía</p>
 		</div>
 
-
-	   <form action="cargaEmpleado" method="get">
-			<input type="submit" value="Ir a Form Empleado"/>
-		</form>
-		<br/>
-	   <form action="cargaConductor" method="get">
-			<input type="submit" value="Ir a Form Conductor"/>
-		</form>
-
+		
 		<footer th:replace="layout/plantilla :: footer"></footer>
 	</body>
 </html>

@@ -19,9 +19,7 @@ public class InicioController {
 	private PersonaService personaService;
 
 	@GetMapping("/")
-	public String inicio(Model model) {
-		var personas = personaService.listarPersonas();
-		model.addAttribute("personas", personas);
+	public String inicio() {		
 		return "index";
 	}
 	
@@ -65,4 +63,13 @@ public class InicioController {
 
 		return "persona/cargaConductor";
 	}
+	
+	@GetMapping("/infoPersonas")
+	public String listarP(Model model) {
+		var personas = personaService.listarPersonas();
+		model.addAttribute("personas", personas);
+		return "informes/infoPersonas";
+	}
+	
+	
 }

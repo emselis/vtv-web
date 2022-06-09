@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org" xmlns"http://www.w3.org/1999/xhtml">
+
+<head>
+   <meta charset="UTF-8"/>
+   <title>Plantilla</title>
+</head>
+
+<body>
+   <header th:fragment="header">
+      <h1>App de Verificacion Técnica Vehicular</h1>
+   </header>
+
+   <div th:fragment="nav-superior" id="navegacion" class="navegacion contenedor">
+		<nav id="menu">
+			<ul class="clearfix">
+				<li><a href="#" th:href="@{/}">Inicio</a></li>
+				<li><a href="#" th:href="@{/cargaEmpleado}">Inspeccion</a></li>
+				<li><a href="#">Personas</a>
+					<ul>
+						<li><a href="#" th:href="@{/cargaEmpleado}">Empleados</a></li>
+						<li><a href="#" th:href="@{/cargaPersona}">Persona</a></li>
+						<li><a href="#" th:href="@{/cargaConductor}">Conductores</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Informes</a>
+					<ul>
+						<li><a href="#" th:href="@{/cargaEmpleado}">Vehiculos</a></li>
+						<li><a href="#" th:href="@{/infoPersonas}">Personas</a></li>
+						<li><a href="#" th:href="@{/cargaPersona}">Propietarios</a></li>
+						<li><a href="#" th:href="@{/cargaConductor}">Conductores</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</div>
+
+
+   <footer th:fragment="footer">
+      <p>Info footer <a href="#" target="_blank">VTV</a></p>
+   </footer>
+</body>
+
+</html>

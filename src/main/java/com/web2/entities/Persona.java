@@ -17,13 +17,13 @@ public class Persona implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idPersona;
 	
-	@NotEmpty
+	@NotEmpty(message="Debe ingrese el nombre")
 	protected String nombre;
 	
-	@NotEmpty
+	@NotEmpty(message="Debe ingrese el apellido")
 	protected String apellido;
 	
-	@NotEmpty
+	@NotEmpty(message="Debe ingrese el documento")
 	protected String documento;
 
 

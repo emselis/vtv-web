@@ -12,6 +12,7 @@ body {
 }
 
 /** Globales **/
+
 .contenedor{
     max-width: 1200px;
     width: 95%;
@@ -34,6 +35,11 @@ h3 {
 h4 {
     font-size: 2.8rem;
 }
+p {
+    font-size: 1.4rem;
+    line-height: 2;
+}
+
 img {
     max-width: 100%;
 }
@@ -110,23 +116,55 @@ img {
 }
 
 /** Navegación **/
-.navegacion a {
-    text-align: center;
+.navegacion{
+    background-color: green;
+  }
+  nav {
+    width: 1200px;
+    margin:0 auto;
+    position: relative;
+  }
+  nav ul {
+    list-style: none;
+  }
+  nav > ul > li {
+    float: left;
+  }
+  nav ul::after {
+    content: '';
     display: block;
-    font-size: 1.8rem;
-    color: #ffffff;
+    clear: both;
+  }
+  nav ul li a {
+    display: inline-block;
+    color: white;
+    padding: 20px 20px;
     text-decoration: none;
-}
-@media (min-width: 768px) {
-   .navegacion a {
-        display: inline;
-        margin-right: 2rem;
-   }
-   /* Esto elimina el espacio derecho del último elemento */
-   .navegacion a:last-of-type {
-        margin: 0;
-   }
-}
+    width: 200px;
+    text-align: center;
+  }
+  
+  
+  nav ul li a:hover {
+    background-color: greenyellow;
+    color: green;
+  }
+  
+  /* SEgundo nivel **/
+  
+  nav ul ul {
+    position: absolute;
+    top:100%;
+    background-color: green;
+    display: none;
+  }
+  nav ul li:hover > ul {
+    display: block;
+  }
+  nav ul li:hover {
+    background-color: green;
+  }
+  
 
 /** header **/
 @media (min-width: 768px) {

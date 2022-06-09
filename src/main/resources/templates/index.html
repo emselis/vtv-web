@@ -9,15 +9,10 @@
 	<body>
 	   <h1>Inicio - preVTV</h1>
 		<nav id="nav" class="navegacion-principal contenedor">
-			<a href="#">Inspección</a>
-			<a href="#">Listados y Consultas</a>
-			<a href="#">Administración</a>
-			
 			<ul>
-				<li><a href="#"th:href="@{/clienteBanca/}">Crear Empleado</a></li>
-				<li><a href="#"th:href="@{/tarjetaCredito/}">Crear Conductor</a></li>
-				<li><a href="#"th:href="@{/tarjetaDebito/}">Crear Propietario</a></li>
-				<li><a href="#"th:href="@{/clienteBanca/lista}">Crear Inspeccion</a></li>
+				<li><a href="#"th:href="@{/cargaPersona}">Crear Persona</a></li>
+				<li><a href="#"th:href="@{/cargaEmpleado}">Crear Empleado</a></li>
+				<li><a href="#"th:href="@{/cargaConductor}">Crear Conductor</a></li>
 			</ul>
 		</nav> 
 
@@ -29,6 +24,8 @@
 					<th>Nombre:</th>
 					<th>Apellido:</th>
 					<th>Documento:</th>
+					<th>Editar:</th>
+					<th>Eliminar:</th>
 				</tr>
 				
 				<tr th:each="persona : ${personas}">
@@ -36,6 +33,7 @@
 					<td th:text="${persona.nombre}">Mostrar Nombre</td>
 					<td th:text="${persona.apellido}">Mostrar Apellido</td>
 					<td th:text="${persona.documento}">Mostrar Documento</td>
+					<td><a th:href="@{/editar/} + ${persona.id_persona}" th:text="Editar"/></td>
 				</tr>
 			</table>
 	   </div>

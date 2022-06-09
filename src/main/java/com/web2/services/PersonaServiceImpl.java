@@ -42,7 +42,7 @@ public class PersonaServiceImpl implements PersonaService {
 	public Persona encontrarPersona(Persona persona) {
 		//findById devuelve objeto "Opcional", entonces:
 		//Lanzamos excepción con método .orElseThrow o mostramos null con .orElse
-		return personarepository.findById(persona.getId_persona()).orElse(null);
+		return personarepository.findById(persona.getIdPersona()).orElse(null);
 	}
 
 }

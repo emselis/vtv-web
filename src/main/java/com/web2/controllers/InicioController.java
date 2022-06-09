@@ -1,8 +1,11 @@
 package com.web2.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import com.web2.entities.Persona;
@@ -29,16 +32,25 @@ public class InicioController {
 	}
 
 	@PostMapping("/guardar")
-	public String guardarPersona(Persona persona) {
+	public String guardarPersona(@Valid Persona persona, Errors errores) {
+		if(errores.hasErrors()) {
+			return "persona/modificarPersona";
+		}
 		personaService.guardar(persona);
 		return "redirect:/";
 	}
 	
-	@GetMapping("/editar/{id_persona}")
+	@GetMapping("/editar/{idPersona}")	// <--- Así pasamos el IdPersona en el path
 	public String editarPersona(Persona persona, Model model) {
 		persona=personaService.encontrarPersona(persona);
 		model.addAttribute("persona", persona);
 		return "persona/modificarPersona";
+	}
+	
+	@GetMapping("/eliminar")	// <--- Acá pasamos query parameters (ver HTML)
+	public String eliminarPersona(Persona persona) {
+		personaService.eliminar(persona);
+		return "redirect:/";
 	}
 	
 	

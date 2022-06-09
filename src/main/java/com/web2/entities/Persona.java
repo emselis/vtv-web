@@ -2,6 +2,8 @@ package com.web2.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+
 import lombok.Data;
 
 @Data
@@ -13,9 +15,15 @@ public class Persona implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_persona;
+	private Long idPersona;
+	
+	@NotEmpty
 	protected String nombre;
+	
+	@NotEmpty
 	protected String apellido;
+	
+	@NotEmpty
 	protected String documento;
 
 

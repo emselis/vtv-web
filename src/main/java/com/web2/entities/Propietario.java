@@ -8,19 +8,22 @@
 //@Data
 //@EqualsAndHashCode(callSuper=true)
 //@Entity
-//@Table(name = "conductores")
+//@Table(name = "propietarios")
 ////@PrimaryKeyJoinColumn(referencedColumnName = "documento")
-//public class Conductor extends Persona {
+//public class Propietario extends Persona {
 //	
 //	private static final long serialVersionUID = 1L;
 //	
 //	@Id
 //	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	private long idConductor;
+//	private int idPropietario;
 //
-//	private String esPropietario;
+//	private String exento;
 //	
 //	@OneToOne
 //	@JoinColumn(name="documento")
 //	private Persona persona;
+//	
 //}
+//
+//

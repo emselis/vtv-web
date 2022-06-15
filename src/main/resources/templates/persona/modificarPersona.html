@@ -20,7 +20,7 @@
 		<a th:href="@{/}">Regresar al Inicio</a>
 		<div class="grid centrar-columnas">
 			<form th:action="@{/guardar}" method="post" th:object="${persona}">
-				<input type="hidden" name="idPersona" th:field="*{idPersona}" />
+				<!-- <input type="hidden" name="documento" th:field="*{documento}" /> -->
 				<div class="campo">
 					<label for="documento">N° Docuento</label>
 					<input type="number" name="documento" placeholder="Documento" th:field="*{documento}" />

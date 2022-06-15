@@ -14,10 +14,9 @@
 	<div th:replace="layout/plantilla :: nav-superior"></div>
 
 
-	<div th:if="${personas != null and !personas.empty}">
+	<div class="grid centrar-columnas" th:if="${personas != null and !personas.empty}">
 		<table border="1">
 			<tr>
-				<th>Id Persona:</th>
 				<th>Nombre:</th>
 				<th>Apellido:</th>
 				<th>Documento:</th>
@@ -26,12 +25,11 @@
 			</tr>
 
 			<tr th:each="persona : ${personas}">
-				<td th:text="${persona.idPersona}">Mostrar Id</td>
 				<td th:text="${persona.nombre}">Mostrar Nombre</td>
 				<td th:text="${persona.apellido}">Mostrar Apellido</td>
 				<td th:text="${persona.documento}">Mostrar Documento</td>
-				<td><a th:href="@{/editar(idPersona=${persona.idPersona})}" th:text="Editar" /></td>
-				<td><a th:href="@{/eliminar/} + ${persona.idPersona}" th:text="Eliminar" /></td>
+				<td><a th:href="@{/editarPersona(documento=${persona.documento})}" th:text="Editar" /></td>
+				<td><a th:href="@{/eliminarPersona/} + ${persona.documento}" th:text="Eliminar" /></td>
 			</tr>
 		</table>
 	</div>

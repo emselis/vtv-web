@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Carga de Empleado</title>
+	<title>Carga de Cliente</title>
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
@@ -15,11 +15,11 @@
 
 
 	<main class="contenedor">
-		<h2 class="centrar-texto">Conductor</h2>
+		<h2 class="centrar-texto">Cliente</h2>
 		</tr>
 		<a th:href="@{/}">Regresar al Inicio</a>
 		<div class="grid centrar-columnas">
-			<form action="#">
+			<form th:action="@{/guardarCliente}" method="post" th:object="${cliente}">
 				<!-- <div class="campo">
 							<label for="tipoDoc">Tipo Doc.</label>
 							<input type="text" id="tipoDoc" placeholder="">

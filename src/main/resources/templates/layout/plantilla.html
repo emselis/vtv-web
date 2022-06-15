@@ -8,29 +8,39 @@
 
 <body>
 	<header th:fragment="header">
-		<h1>App de Verificacion Técnica Vehicular</h1>
+		<h1>Verificación Técnica Vehicular</h1>
 	</header>
 
 	<div th:fragment="nav-superior" id="navegacion" class="navegacion  centrar-texto">
 		<nav id="menu">
 			<ul class="clearfix">
 				<li><a href="#" th:href="@{/}">Inicio</a></li>
-				<li><a href="#" th:href="@{/cargaEmpleado}">Inspeccion</a></li>
-				<li><a href="#">Personas</a>
+				<li><a href="#">Empleado</a>
 					<ul>
-						<li><a href="#" th:href="@{/cargaEmpleado}">Empleados</a></li>
-						<li><a href="#" th:href="@{/cargaPersona}">Persona</a></li>
-						<li><a href="#" th:href="@{/cargaConductor}">Conductores</a></li>
+						<li><a href="#" th:href="@{/cargaEmpleado}">Nuevo</a></li>
+						<li><a href="#" th:href="@{/infoEmpleados}">Listar</a></li>
+						<li><a href="#" th:href="@{/}">Buscar por DNI</a></li>
 					</ul>
 				</li>
-				<li><a href="#">Informes</a>
+				<li><a href="#" th:href="@{/cargaCliente}">Inspección - clienteTemp</a>
 					<ul>
-						<li><a href="#" th:href="@{/cargaEmpleado}">Vehiculos</a></li>
-						<li><a href="#" th:href="@{/infoPersonas}">Personas</a></li>
-						<li><a href="#" th:href="@{/cargaPersona}">Propietarios</a></li>
-						<li><a href="#" th:href="@{/cargaConductor}">Conductores</a></li>
+						<li><a href="#" th:href="@{/}">Nueva</a></li>
+					<!-- 	<ul>
+							<li><a href="#" th:href="@{/}">Auto</a></li>
+							<li><a href="#" th:href="@{/}">Moto</a></li>
+						</ul> -->
+						<li><a href="#" th:href="@{/}">Buscar un Dominio</a></li>
+						<li><a href="#" th:href="@{/infoClientes}">Buscar por Propietario - ClienteTemp</a></li>
+						<li><a href="#" th:href="@{/}">Listar por</a>
+							<ul>
+								<li><a href="#" th:href="@{/}">Aptos</a></li>
+								<li><a href="#" th:href="@{/}">Condicionales</a></li>
+								<li><a href="#" th:href="@{/}">Rechazados</a></li>
+							</ul>
+						</li>
 					</ul>
 				</li>
+				<!-- <li><a href="#" th:href="@{/}">Administración</a></li> -->
 			</ul>
 		</nav>
 	</div>

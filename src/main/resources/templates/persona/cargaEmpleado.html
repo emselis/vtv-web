@@ -19,7 +19,7 @@
 		</tr>
 		<a th:href="@{/}">Regresar al Inicio</a>
 		<div class="grid centrar-columnas">
-			<form action="#">
+			<form th:action="@{/guardarEmpleado}" method="post" th:object="${empleado}">
 				<!-- <div class="campo">
 							<label for="tipoDoc">Tipo Doc.</label>
 							<input type="text" id="tipoDoc" placeholder="">

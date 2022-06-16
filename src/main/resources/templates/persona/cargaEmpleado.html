@@ -17,7 +17,7 @@
 	<main class="contenedor">
 		<h2 class="centrar-texto">Empleado</h2>
 		</tr>
-		<a th:href="@{/}">Regresar al Inicio</a>
+
 		<div class="grid centrar-columnas">
 			<form th:action="@{/guardarEmpleado}" method="post" th:object="${empleado}">
 				<!-- <div class="campo">
@@ -26,21 +26,26 @@
 					  </div> -->
 				<div class="campo">
 					<label for="documento">N° Docuento</label>
-					<input type="number" id="documento" placeholder="Nro. documento">
+					<input type="number" id="documento" name="documento" placeholder="Nro. documento">
+					<span th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}">Error Documento</span>
 				</div>
 				<div class="campo">
 					<label for="nombre">Nombre</label>
-					<input type="text" id="nombre" placeholder="Nombre">
+					<input type="text" id="nombre" name="nombre" placeholder="Nombre">
+					<span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error Nombre</span>
 				</div>
 				<div class="campo">
 					<label for="apellido">Apellido</label>
-					<input type="text" id="apellido" placeholder="Apellidos">
+					<input type="text" id="apellido" name="apellido" placeholder="Apellidos">
+					<span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Error Apellido</span>
 				</div>
 				<div class="campo">
 					<label for="puesto">Puesto</label>
-					<input type="text" id="puesto" placeholder="Cargo">
+					<select name="puesto" id="puesto">
+						<option value="INSPECTOR">INSPECTOR</option>
+						<!-- <option value="saab">Saab</option> -->
+					</select>
 				</div>
-
 				<div class="campo enviar">
 					<input type="submit" value="Enviar" class="btn btn-primario">
 				</div>

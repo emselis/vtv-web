@@ -30,10 +30,14 @@ public class EmpleadoController {
 	
 	@PostMapping("/guardarEmpleado")
 	public String guardarEmpleado(@Valid Empleado empleado, Errors errores) {
+		System.out.println("entra guardarEmpleado");
 		if(errores.hasErrors()) {
-			return "persona/cargaEmpleado";
+			System.out.println("Sale con error al guardarEmpleado");
+			System.out.println(errores.getFieldError());
+			return "redirect:/cargaEmpleado";
 		}
 		empleadoService.guardarEmpleado(empleado);
+		System.out.println("guardarEmpleado --> OK");
 		return "redirect:/infoEmpleados";
 	}
 	

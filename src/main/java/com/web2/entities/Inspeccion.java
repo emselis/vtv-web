@@ -15,4 +15,19 @@ public class Inspeccion {
 	private String estado;
 	private String observaciones;
 	
+	public Inspeccion() {}
+
+	public Inspeccion(long idInspeccion, LocalDateTime fecha, int inspector, int conductor, int propietario,
+			String estado, String observaciones) {
+		super();
+		this.idInspeccion = idInspeccion;
+		this.fecha = fecha;
+		this.inspector = inspector;
+		this.conductor = conductor;
+		this.propietario = propietario;
+		this.estado = estado;
+		this.observaciones = observaciones;
+	}
+	
+	
 }

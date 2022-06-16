@@ -30,8 +30,8 @@
 				<td th:text="${empleado.nombre}">Mostrar Nombre</td>
 				<td th:text="${empleado.apellido}">Mostrar Apellido</td>
 				<td th:text="${empleado.puesto}">Mostrar Puesto</td>
-				<td><a th:href="@{/editarEmpleado(documento=${empleado.documento})}" th:text="Editar" /></td>
-				<td><a th:href="@{/eliminarEmpleado/} + ${empleado.documento}" th:text="Eliminar" /></td>
+				<td><a th:href="@{/editarEmpleado(documento=${empleado.documento})}" th:text="Editar" ></td>
+				<td><a th:href="@{/eliminarEmpleado/} + ${empleado.documento}" th:text="Eliminar" ></td>
 			</tr>
 		</table>
 	</div>

@@ -1,7 +1,6 @@
 package com.web2.entities;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
 
 import lombok.*;
 
@@ -16,11 +15,11 @@ public class Empleado extends Persona {
 //	@NotEmpty(message="Debe ingrese el puesto")
 	private String puesto;
 
-	public Empleado() {}
-	
-	public Empleado(long documento, String nombre, String apellido) {
-		super(documento, nombre, apellido);
-		this.puesto=puesto;
-	}	
+//	public Empleado() {}
+//	
+//	public Empleado(long documento, String nombre, String apellido) {
+//		super(documento, nombre, apellido);
+//		this.puesto=puesto;
+//	}	
 
 }

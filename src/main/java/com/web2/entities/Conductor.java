@@ -1,16 +1,15 @@
-//package com.web2.entities;
+package com.web2.entities;
 //
 //import javax.persistence.*;
 //
-//import lombok.Data;
-//import lombok.EqualsAndHashCode;
+import lombok.*;
 //
-//@Data
+@Data
 //@EqualsAndHashCode(callSuper=true)
 //@Entity
 //@Table(name = "conductores")
 ////@PrimaryKeyJoinColumn(referencedColumnName = "documento")
-//public class Conductor extends Persona {
+public class Conductor extends Persona {
 //	
 //	private static final long serialVersionUID = 1L;
 //	
@@ -18,9 +17,9 @@
 //	@GeneratedValue(strategy = GenerationType.IDENTITY)
 //	private long idConductor;
 //
-//	private String esPropietario;
+	private String esPropietario;
 //	
 //	@OneToOne
 //	@JoinColumn(name="documento")
 //	private Persona persona;
-//}
+}

@@ -2,32 +2,24 @@ package com.web2.entities;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.*;
+
 import lombok.Data;
 
 @Data
+@Entity
+@Table(name = "inspecciones")
 public class Inspeccion {
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idInspeccion;
+	
 	private LocalDateTime fecha;
-	private int inspector;
-	private int conductor;
-	private int propietario;
+	private Empleado inspector;
+	private Conductor conductor;
+	private Propietario propietario;
 	private String estado;
 	private String observaciones;
-	
-	public Inspeccion() {}
-
-	public Inspeccion(long idInspeccion, LocalDateTime fecha, int inspector, int conductor, int propietario,
-			String estado, String observaciones) {
-		super();
-		this.idInspeccion = idInspeccion;
-		this.fecha = fecha;
-		this.inspector = inspector;
-		this.conductor = conductor;
-		this.propietario = propietario;
-		this.estado = estado;
-		this.observaciones = observaciones;
-	}
-	
 	
 }

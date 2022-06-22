@@ -38,16 +38,6 @@ public class EmpleadoService {
 		//findById devuelve objeto "Opcional", entonces:
 		//Lanzamos excepción con método .orElseThrow o mostramos null con .orElse
 		return empleadoRepository.findById(empleado.getDocumento()).orElse(null);
-	}
-	
-	
-	@Transactional
-	public Empleado encontrarEmpleadoPorDocumento(long documento) {
-		//findById devuelve objeto "Opcional", entonces:
-		//Lanzamos excepción con método .orElseThrow o mostramos null con .orElse
-		Empleado empleado = empleadoRepository.findById(documento).orElse(null);
-		return empleado;
-	}
-	
+	}	
 
 }

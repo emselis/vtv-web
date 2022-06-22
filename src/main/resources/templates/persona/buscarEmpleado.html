@@ -20,11 +20,11 @@
 
 		<div class="grid centrar-columnas">
 			<!-- <form th:action="@{/eliminarEmpleado/} + ${empleado.documento}" method="post" th:object="${documento}"> -->
-			<form th:action="@{/encontrarEmpleado(documento=${empleado.documento})}" method="post" th:object="${empleado}"> 
+			<form th:action="@{/encontrarEmpleado}" method="get" th:object="${empleado}"> 
 				<div class="campo">
 					<label for="documento">N° Documento</label>
-					<input type="number" name="documento" id="documento" th:name="documento" th:field="${empleado.documento}" />
-					<!-- <span th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}">Error Documento</span> -->
+					<input type="number" placeholder="Documento" id="documento" name="documento" th:field="*{documento}" />
+					<span th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}">Error Documento</span>
 				</div>
 				<div class="campo enviar">
 					<input type="submit" value="Buscar" class="btn btn-primario">

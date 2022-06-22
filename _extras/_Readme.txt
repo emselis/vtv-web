@@ -1,0 +1,3 @@
+- Base de datos con docker-compose
+- Estructura de tablas usadas en Hoja2 del archivo Excel
+- 

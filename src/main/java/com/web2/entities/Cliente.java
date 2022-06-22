@@ -2,18 +2,16 @@ package com.web2.entities;
 
 import javax.persistence.*;
 
-import lombok.*;
+import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "empleados")
+@Table(name = "clientes")
 @PrimaryKeyJoinColumn(referencedColumnName = "documento")
-public class Empleado extends Persona {
+public class Cliente extends Persona{
 	
 	private static final long serialVersionUID = 1L;
-	
-	private String puesto;
-	
-	private String estado;
 
+	private String exento;
+	
 }

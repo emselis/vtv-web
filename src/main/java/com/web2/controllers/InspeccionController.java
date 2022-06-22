@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.web2.entities.Cliente;
 import com.web2.entities.Inspeccion;
+import com.web2.services.EmpleadoService;
 import com.web2.services.InspeccionService;
 
 
@@ -23,8 +25,15 @@ public class InspeccionController {
 	@Qualifier("inspeccionService")
 	private InspeccionService inspeccionService;
 	
+	@Autowired
+	private EmpleadoService empleadoService;
+	
 	@GetMapping("/cargaInspeccion")
-	public String agregaInspeccion(Inspeccion inspeccion) {
+	public String agregaInspeccion(Cliente cliente, Model modelo) { //(Inspeccion inspeccion) {
+		
+		var empleados = empleadoService.listarEmpleados();
+		modelo.addAttribute("empleados", empleados);
+		
 		return "inspecciones/cargaInspeccion";
 	}
 

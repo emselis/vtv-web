@@ -42,6 +42,13 @@
 						<!-- <option value="otro">Otro</option> -->
 					</select>
 				</div>
+				<div class="campo">
+					<label for="estado">Habilitado</label>
+					<select name="estado" id="estado" th:field="*{estado}">
+						<option value="ALTA">SI</option>
+						<option value="BAJA">NO</option>
+					</select>
+				</div>
 				<div class="campo enviar">
 					<input type="submit" value="Enviar" class="btn btn-primario">
 				</div>

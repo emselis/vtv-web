@@ -40,4 +40,13 @@ public class EmpleadoService {
 		return empleadoRepository.findById(empleado.getDocumento()).orElse(null);
 	}	
 
+	public List<Empleado> empleadosActivos(Empleado empleado){
+		
+//		var empleados = empleadoRepository.findAll();
+		
+		return (List<Empleado>) empleadoRepository.findAll();
+	}
+	
+	
+	
 }

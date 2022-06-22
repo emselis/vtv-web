@@ -23,7 +23,5 @@ public class Propietario extends Persona {
 //	@OneToOne
 //	@JoinColumn(name="documento")
 //	private Persona persona;
-//	
+	
 }
-//
-//

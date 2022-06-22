@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org" xmlns"http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Pagina de Informes</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<header th:replace="layout/plantilla :: header"></header>
+
+	<div th:replace="layout/plantilla :: nav-superior"></div>
+
+
+	<div class="grid centrar-columnas" th:if="${clientes != null and !clientes.empty}">
+		<table border="1">
+			<tr>
+				<th>Documento:</th>
+				<th>Nombre:</th>
+				<th>Apellido:</th>
+				<th>Exento:</th>
+				<th>Editar:</th>
+				<th>Eliminar:</th>
+			</tr>
+
+			<tr th:each="cliente : ${clientes}">
+				<td th:text="${cliente.documento}">Mostrar Documento</td>
+				<td th:text="${cliente.nombre}">Mostrar Nombre</td>
+				<td th:text="${cliente.apellido}">Mostrar Apellido</td>
+				<td th:text="${cliente.exento}">Mostrar Exento</td>
+				<td><a th:href="@{/editarCliente(documento=${cliente.documento})}" th:text="Editar" /></td>
+				<td><a th:href="@{/eliminarCliente/} + ${cliente.documento}" th:text="Eliminar" /></td>
+			</tr>
+		</table>
+	</div>
+
+	<div th:if="${clientes == null or clientes.empty}">
+		<p>La lista de clientes está vacía</p>
+	</div>
+
+
+	<footer th:replace="layout/plantilla :: footer"></footer>
+</body>
+
+</html>

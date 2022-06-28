@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org" xmlns"http://www.w3.org/1999/xhtml">
+
+<head>
+   <meta charset="UTF-8">
+   <title>Carga de Inspecciones</title>
+   <link rel="stylesheet" href="/css/normalize.css">
+   <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+   <header th:replace="layout/plantilla :: header"></header>
+
+   <div th:replace="layout/plantilla :: nav-superior"></div>
+   <main class="contenedor">
+      <h2 class="centrar-texto">Cargando nueva Inspección</h2>
+
+      <hr>
+      <br>
+
+      <h3 class="centrar-texto">Seleccione un Inspector</h3>
+      <div class="centrar-texto">
+         <form th:action="@{/inspecciones/asignaCliente}" method="post" th:object="${empleado}">
+            <div class="campo">
+               <label for="empleado">Inspector</label>
+               <select th:object="${empleado}" th:field="*{documento}" name="empleados" id="empleados">
+                  <option th:each="empleado : ${empleados}" th:value="${empleado.documento}"
+                     th:text="${empleado.nombre} + ' ' + ${empleado.apellido}"
+                     th:selected="true">Inspector n"></option>
+               </select>
+            </div>
+            <div class="campo enviar">
+               <input type="submit" value="Enviar" class="btn btn-primario"/>
+            </div>
+         </form>
+      </div>
+
+   </main>
+
+   <footer th:replace="layout/plantilla :: footer"></footer>
+</body>
+
+</html>

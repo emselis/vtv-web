@@ -17,8 +17,8 @@ public class Inspeccion {
 	
 	private LocalDateTime fecha;
 	private Empleado inspector;
-	private Conductor conductor;
-	private Propietario propietario;
+	private String conductor;
+	private String propietario;
 	private String estado;
 	private String observaciones;
 	

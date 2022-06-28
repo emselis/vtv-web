@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,11 +41,9 @@ public class EmpleadoService {
 		return empleadoRepository.findById(empleado.getDocumento()).orElse(null);
 	}	
 
-	public List<Empleado> empleadosActivos(Empleado empleado){
-		
-//		var empleados = empleadoRepository.findAll();
-		
-		return (List<Empleado>) empleadoRepository.findAll();
+	public List<Empleado> empleadosEstadoPuesto(
+			@Param("estado") String estado, @Param("puesto") String puesto){
+		return (List<Empleado>) empleadoRepository.empleadosEstadoPuesto(estado, puesto);
 	}
 	
 	

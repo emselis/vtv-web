@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Carga de Empleado</title>
+	<title>Editar de Empleado</title>
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
@@ -15,16 +15,16 @@
 
 
 	<main class="contenedor">
-		<h2 class="centrar-texto">Empleado nuevo</h2>
+		<h2 class="centrar-texto">Empleado (editar)</h2>
 		</tr>
 
 		<div class="grid centrar-columnas">
-			<form th:action="@{/guardarEmpleado}" method="post" th:object="${empleado}">
+			<form th:action="@{/editarEmpleado}" method="post" th:object="${empleado}">
 
 				<!-- <fieldset> -->
 					<div class="campo">
 						<label for="documento">N° Documento</label>
-						<input type="number" id="documento" th:name="documento" placeholder="Nro. documento" th:field="*{documento}" />
+						<input type="number" id="documento" th:name="documento" placeholder="Nro. documento" th:field="*{documento}" readonly/>
 						<span th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}">Error Documento</span>
 					</div>
 					<!-- <input type="button" nema="next" class="btn btn-primario" value="Siguiente" />
@@ -46,7 +46,7 @@
 					<div class="campo">
 						<label for="puesto">Puesto</label>
 						<select th:name="puesto" name="puesto" id="puesto" th:field="*{puesto}">
-							<option th:each="cargo : ${puestos}" th:value="${cargo}" th:text="${cargo}" th:selected="true">INSPECTOR</option>
+							<option value="INSPECTOR">INSPECTOR</option>
 						</select>
 					</div>
 					<div class="campo">

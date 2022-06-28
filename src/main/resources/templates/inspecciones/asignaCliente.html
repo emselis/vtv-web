@@ -16,22 +16,18 @@
       <h2 class="centrar-texto">Cargando nueva Inspección</h2>
 
       <hr>
-
-      <h3 class="centrar-texto">Seleccione un Inspector</h3>
-      <div class="centrar-texto">
-         <label for="empleado">Inspector</label>
-         <select th:field="${empleados}" name="empleados" id="empleados">
-            <!-- th:field="${empleados}" th:each="empleado : ${empleados}"> -->
-            <option th:each="empleado : ${empleados}" th:value="${empleado.documento}"
-               th:text="${empleado.nombre} + ' ' + ${empleado.apellido}">Inspector n</td>
-         </select>
+      <!-- <br> -->
+      <div class="grid centrar-columnas" th:field="empleado" th:if="${empleado != null}">
+            <h4 for="nombre" th:text="'Inspector asignado: ' + ${empleado.nombre} + ' ' +
+             ${empleado.apellido}">Mostrar Nombre></h4>
       </div>
-      <!--        HASTA ACA         ------         CARGA INSPECTOR         -->
-      <br>
-      <hr>
 
-      <!-- <div class="grid centrar-columnas">
-			<form th:action="@{/encontrarCliente}" method="get" th:object="${cliente}"> 
+      <hr>
+      <br>
+      
+      <h3 class="centrar-texto">Ingrese datos del conductor</h3>
+      <div class="grid centrar-columnas">
+			<form th:action="@{/inspecciones/asignarPropietario}" method="get" th:object="${cliente}"> 
 				<div class="campo">
 					<label for="documento">N° Documento</label>
 					<input type="number" placeholder="Documento" id="documento" name="documento" th:field="*{documento}" />
@@ -41,9 +37,10 @@
 					<input type="submit" value="Buscar" class="btn btn-primario">
 				</div>
 			</form>
-		</div> -->
+		</div>
 
-      <h3 class="centrar-texto">Datos del Conductor</h3>
+
+      <!-- <h3 class="centrar-texto">Datos del Conductor</h3>
       <div class="grid centrar-columnas">
          <form th:action="@{/guardarCliente}" method="post" th:object="${cliente}">
             <div class="campo">
@@ -70,11 +67,12 @@
                <input type="submit" value="Enviar" class="btn btn-primario">
             </div>
          </form>
-      </div>
+      </div> -->
 
+      <!-- 
       <hr>
       <h3 class="centrar-texto">Datos del Propietario</h3>
-      <!-- <div class="grid centrar-columnas">
+      <div class="grid centrar-columnas">
          <form th:action="@{/guardarCliente}" method="post" th:object="${cliente2}">
             <div class="campo">
                <label for="documento">N° Documento</label>

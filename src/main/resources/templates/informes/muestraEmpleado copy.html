@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org" xmlns"http://www.w3.org/1999/xhtml">
+
+<head>
+   <meta charset="UTF-8">
+   <title>Pagina de Informes</title>
+   <link rel="stylesheet" href="css/normalize.css">
+   <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+   <header th:replace="layout/plantilla :: header"></header>
+
+   <div th:replace="layout/plantilla :: nav-superior"></div>
+
+   <main class="contenedor">
+      <h2 class="centrar-texto">Automovil</h2>
+      <div th:if="${avisos != null}">
+         <label th:text="${avisos}"></label>
+      </div>
+  
+      <div class="grid centrar-columnas" th:if="${auto != null}">
+         <table border="1">
+            <tr>
+               <th>Dominio:</th>
+               <th>Propietario:</th>
+               <th>Marca:</th>
+               <th>Modelo:</th>
+               <th>Version:</th>
+               <th>Editar:</th>
+               <th>Eliminar:</th>
+            </tr>
+
+            <tr>
+               <td th:text="${auto.dominio}">Mostrar Dominio</td>
+               <td th:text="">Mostrar Propietario</td>
+               <td th:text="">Mostrar Marca</td>
+               <td th:text="">Mostrar Modelo</td>
+               <td th:text="">Mostrar Version</td>
+               <td><a th:href="@{/auto/editarAuto(dominio=${auto.dominio})}" th:text="Editar"></td>
+               <!-- <td><a th:href="@{/editarEmpleado/} + ${empleado.dominio}" th:text="Editar" ></td> -->
+               <td><a th:href="@{/auto/eliminarAuto/} + ${auto.dominio}" th:text="Eliminar"></td>
+            </tr>
+         </table>
+      </div>
+
+      <!-- <div th:if="${auto == null or auto.empty}"> -->
+      <div class="centrar-texto" th:if="${auto == null}">
+         <p>No se encuentro un vehículo con ese dominio</p>
+         <!-- <p>Si desea cargar uno nuevo, Presione <a th:href="@{/cargaAuto}" th:text="Aquí"></p> -->
+      </div>
+      
+   </main>
+
+   <footer th:replace="layout/plantilla :: footer"></footer>
+</body>
+
+</html>

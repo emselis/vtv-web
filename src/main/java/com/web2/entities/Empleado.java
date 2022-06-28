@@ -15,5 +15,7 @@ public class Empleado extends Persona {
 	private String puesto;
 	
 	private String estado;
+	
+	// private long idEmpleado;
 
 }

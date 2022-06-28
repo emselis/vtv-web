@@ -1,0 +1,15 @@
+
+SELECT personas.documento, nombre, apellido, estado FROM personas, empleados 
+WHERE personas.documento = empleados.documento 
+and empleados.estado = "ALTA" and empleados.puesto = "INSPECTOR";
+
+SELECT p.documento, nombre, apellido, estado FROM personas p, empleados e
+WHERE p.documento = e.documento 
+and e.estado = "ALTA" and e.puesto = "INSPECTOR";
+
+SELECT * FROM personas
+WHERE personas.documento = empleados.documento 
+and empleados.estado = "ALTA" and empleados.puesto = "INSPECTOR";
+
+
+SELECT n.idMarca, n.marca FROM version v, modelos m, marcas n WHERE v.idModelo = m.idModelo AND m.idMarca = n.idMarca;

@@ -15,7 +15,7 @@
 		<nav id="menu">
 			<ul class="clearfix">
 				<li><a href="#" th:href="@{/}">Inicio</a></li>
-				<li><a href="#">Empleado</a>
+				<li><a >Empleado</a>
 					<ul>
 						<li><a href="#" th:href="@{/cargaEmpleado}">Nuevo</a></li>
 						<li><a href="#" th:href="@{/listarEmpleados}">Listar</a></li>
@@ -33,13 +33,11 @@
 				</li>
 				<!-- Borrar menu Cliente -->
 
-				<li><a href="#" th:href="@{/cargaCliente}">Inspección - clienteTemp</a>
+				<li><a href="#">Inspección</a>
 					<ul>
-						<li><a href="#" th:href="@{/cargaInspeccion}">Nueva</a></li>
-					<!-- 	<ul>
-							<li><a href="#" th:href="@{/}">Auto</a></li>
-							<li><a href="#" th:href="@{/}">Moto</a></li>
-						</ul> -->
+						<li><a href="#" th:href="@{/inspecciones/iniciaInspeccion}">Nueva</a></li>
+						<li><a href="#" th:href="@{/auto/cargaAuto}">Carga Auto</a></li>
+						<!-- <li><a href="#" th:href="@{/}">Moto</a></li> -->
 						<li><a href="#" th:href="@{/}">Buscar un Dominio</a></li>
 						<li><a href="#" th:href="@{/}">Buscar por Propietario</a></li>
 						<li><a href="#" th:href="@{/}">Listar por</a>

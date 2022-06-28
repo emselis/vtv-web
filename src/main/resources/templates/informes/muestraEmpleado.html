@@ -14,7 +14,10 @@
    <div th:replace="layout/plantilla :: nav-superior"></div>
 
    <main class="contenedor">
-      <h2 class="centrar-texto">Documento del Empleado</h2>
+      <h2 class="centrar-texto">Empleado</h2>
+      <div th:if="${avisos != null}">
+         <label th:text="${avisos}"></label>
+      </div>
       <!-- <div class="grid centrar-columnas" th:if="${empleados != null and !empleados.empty}"> -->
       <!-- <div class="grid centrar-columnas" th:if="${empleado != null and !empleado.empty}"> -->
       <div class="grid centrar-columnas" th:if="${empleado != null}">
@@ -29,7 +32,7 @@
                <th>Eliminar:</th>
             </tr>
 
-            <tr> <!-- th:each="empleado : ${empleados}" -->
+            <tr>
                <td th:text="${empleado.documento}">Mostrar Documento</td>
                <td th:text="${empleado.nombre}">Mostrar Nombre</td>
                <td th:text="${empleado.apellido}">Mostrar Apellido</td>
@@ -45,7 +48,9 @@
       <!-- <div th:if="${empleado == null or empleado.empty}"> -->
       <div class="centrar-texto" th:if="${empleado == null}">
          <p>No se encuentro el empleado</p>
+         <p>Si desea cargar uno nuevo, Presione <a th:href="@{/cargaEmpleado}" th:text="Aquí"></p>
       </div>
+      
    </main>
 
    <footer th:replace="layout/plantilla :: footer"></footer>

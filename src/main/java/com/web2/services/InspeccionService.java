@@ -25,6 +25,7 @@ public class InspeccionService{
 
 	@Transactional
 	public void guardarInspeccion(Inspeccion inspeccion) {
+		
 		inspeccionRepository.save(inspeccion);
 	}
 

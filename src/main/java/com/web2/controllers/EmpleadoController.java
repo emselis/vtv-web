@@ -35,6 +35,7 @@ public class EmpleadoController {
 		// Sin verificacar estos errores pincha html
 		if(errores.hasErrors()) {
 			modelo.addAttribute("empleado", empleado);
+			modelo.addAttribute("puestos", PuestosEmpleados.values());	// Puestos de Enum
 			System.out.println("Errores al cargar el empleado");
 			return "persona/cargaEmpleado";
 		}
@@ -58,6 +59,7 @@ public class EmpleadoController {
 		
 		if(resultado.hasErrors()) {
 			modelo.addAttribute("empleado", empleado);
+			modelo.addAttribute("puestos", PuestosEmpleados.values());	// Puestos de Enum
 			System.out.println("Errores al cargar el empleado");
 			return "persona/cargaEmpleado";
 		}

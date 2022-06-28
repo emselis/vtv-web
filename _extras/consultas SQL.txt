@@ -13,3 +13,8 @@ and empleados.estado = "ALTA" and empleados.puesto = "INSPECTOR";
 
 
 SELECT n.idMarca, n.marca FROM version v, modelos m, marcas n WHERE v.idModelo = m.idModelo AND m.idMarca = n.idMarca;
+
+SELECT n.idMarca, n.marca FROM version v, modelos m, marcas n 
+WHERE n.idMarca = m.idMarca AND m.idModelo = v.idModelo
+GROUP BY n.idMarca;
+

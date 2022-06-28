@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,10 +23,9 @@ public class VersionService{
 		// Cast -> List xq findAll devuelve Object
 		return (List<Version>) versionRepository.findAll();
 	}
-	
-//	public List<Version> versionesMarcas(){
-//		return (List<Version>) versionRepository.versionesMarcas();
+
+//	public List<Version> versionPorModelo(@Param("idMarca") int idModelo){
+//		return (List<Version>) versionRepository.listarPorModelo(idModelo);
 //	}
-	
 	
 }

@@ -4,8 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <title>Pagina de Informes</title>
-   <link rel="stylesheet" href="css/normalize.css">
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="/css/normalize.css">
+   <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -33,10 +33,10 @@
 
             <tr>
                <td th:text="${auto.dominio}">Mostrar Dominio</td>
-               <td th:text="">Mostrar Propietario</td>
-               <td th:text="">Mostrar Marca</td>
-               <td th:text="">Mostrar Modelo</td>
-               <td th:text="">Mostrar Version</td>
+               <td text="">Mostrar Propietario</td>
+               <td th:text="*{idMarca}">Mostrar Marca</td>
+               <td th:text="*{idModelo}">Mostrar Modelo</td>
+               <td th:text="*{idVersion}">Mostrar Version</td>
                <td><a th:href="@{/auto/editarAuto(dominio=${auto.dominio})}" th:text="Editar"></td>
                <!-- <td><a th:href="@{/editarEmpleado/} + ${empleado.dominio}" th:text="Editar" ></td> -->
                <td><a th:href="@{/auto/eliminarAuto/} + ${auto.dominio}" th:text="Eliminar"></td>

@@ -19,7 +19,7 @@
 		</tr>
 
 		<div class="grid centrar-columnas">
-			<form th:action="@{/auto/guardarAuto}" method="post" th:object="${auto}">
+			<form th:action="@{/auto/cargaAutoMarca}" method="post" th:object="${auto}">
 
 				<div class="campo">
 					<label for="dominio">N° Dominio</label>
@@ -34,7 +34,7 @@
 					</select>
 				</div>
 
-				<div class="campo">
+				<!-- <div class="campo">
 					<label for="modelo">Modelo</label>
 					<select th:name="modelos" id="modelos" th:field="*{idModelo}">
 						<option th:each="modelo : ${modelos}" th:value="${modelo.idModelo}" th:text="${modelo.modelo}" th:selected="true">Modelo</option>
@@ -46,7 +46,7 @@
 					<select th:name="versiones" id="versiones" th:field="*{idVersion}">
 						<option th:each="ver : ${versiones}" th:value="${ver.idVersion}" th:text="${ver.version}" th:selected="true">Version</option>
 					</select>
-				</div>
+				</div> -->
 
 				<div class="campo enviar">
 					<input type="submit" value="Enviar" class="btn btn-primario">

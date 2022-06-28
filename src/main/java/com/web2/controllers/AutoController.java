@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web2.entities.Auto;
-import com.web2.entities.Marca;
-import com.web2.entities.Modelo;
-import com.web2.entities.Version;
 import com.web2.services.AutoService;
 import com.web2.services.MarcaService;
 import com.web2.services.ModeloService;
@@ -78,27 +75,24 @@ public class AutoController {
 		return control;
 	}
 
+	private Model agregarMarModVer(Model modelo) {
+		
+		var marcas = marcaService.listarMarcas();
+		modelo.addAttribute("marcas", marcas);
+		var modelos = modeloService.listarModelos();
+		modelo.addAttribute("modelos", modelos);
+		var versiones = versionService.listarVersiones();
+		modelo.addAttribute("versiones", versiones);
+		return modelo;
+	}
+	
 	
 	@GetMapping("/cargaAuto")
 	public String agregaAuto(Model modelo) {
-				
-		var marcas = marcaService.listarMarcas();
-		for(Marca n: marcas) {
-			System.out.println(n.toString());
-		}
-		var modelos = modeloService.listarModelos();
-		for(Modelo m: modelos) {
-			System.out.println(m.toString());
-		}
-		var versiones = versionService.listarVersiones();
-		for(Version v: versiones) {
-			System.out.println(v.toString());
-		}
-		modelo.addAttribute("marcas", marcas);
-		modelo.addAttribute("modelos", modelos);
-		modelo.addAttribute("versiones", versiones);
+		
 		modelo.addAttribute("auto", new Auto());
-				
+		modelo = agregarMarModVer(modelo);
+
 		return "auto/cargaAuto";
 	}
 
@@ -109,6 +103,10 @@ public class AutoController {
 		if (errores.hasErrors()) {
 			modelo.addAttribute("auto", auto);
 			System.out.println("Errores al cargar el auto");
+			
+			modelo = agregarMarModVer(modelo);
+
+			
 			return "auto/cargaAuto";
 		}
 		if(!validarDominio(auto.getDominio())) {
@@ -116,6 +114,8 @@ public class AutoController {
 			resultado.addError(error);
 			modelo.addAttribute("auto", auto);
 			System.out.println("Errores al cargar el auto");
+			modelo = agregarMarModVer(modelo);
+			
 			return "auto/cargaAuto";
 		}
 
@@ -123,8 +123,14 @@ public class AutoController {
 		
 //		autoService.guardarAuto(auto);
 		System.out.println("Auto guardado OK");
+		System.out.println(auto.getDominio());
+		System.out.println(auto.getIdMarca());
+		System.out.println(auto.getIdModelo());
+		System.out.println(auto.getIdVersion());
+//		System.out.println(auto.toString());
+
 		atributos.addFlashAttribute("success", "Auto creado correctamente.");
-		return "/informes/muestraAuto";
+		return "informes/muestraAuto";
 	}
 
 	
@@ -218,4 +224,24 @@ public class AutoController {
 //	}
 //	empleadoService.guardarEmpleado(empleado);
 //	return "redirect:/listarEmpleados";
+//}
+
+
+
+//var marcas = marcaService.listarMarcas();
+//modelo.addAttribute("marcas", marcas);
+//var modelos = modeloService.listarModelos();
+//modelo.addAttribute("modelos", modelos);
+//var versiones = versionService.listarVersiones();
+//modelo.addAttribute("versiones", versiones);
+
+
+//for(Marca n: marcas) {
+//System.out.println(n.toString());
+//}
+//for(Modelo m: modelos) {
+//System.out.println(m.toString());
+//}
+//for(Version v: versiones) {
+//System.out.println(v.toString());
 //}

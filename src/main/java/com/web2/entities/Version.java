@@ -20,7 +20,7 @@ public class Version implements Serializable{
 	private String version;
 	
 	// NO declarar el atributo de FK
-//	private int idMarca;
+//	private int idModelo;
 	
 	
     @ManyToOne

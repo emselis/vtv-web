@@ -70,9 +70,10 @@ public class EmpleadoController {
 	
 	
 	@GetMapping("/editarEmpleado")	// <--- Acá pasamos query parameters (ver HTML)
-	public String editarEmpleado(Empleado empleado, Model model) {
+	public String editarEmpleado(Empleado empleado, Model modelo) {
 		empleado= empleadoService.encontrarEmpleado(empleado);
-		model.addAttribute("empleado", empleado);
+		modelo.addAttribute("empleado", empleado);
+		modelo.addAttribute("puestos", PuestosEmpleados.values());	// Puestos de Enum
 		return "persona/editarEmpleado";
 	}
 	

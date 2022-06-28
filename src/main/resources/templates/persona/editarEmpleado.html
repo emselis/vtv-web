@@ -46,7 +46,7 @@
 					<div class="campo">
 						<label for="puesto">Puesto</label>
 						<select th:name="puesto" name="puesto" id="puesto" th:field="*{puesto}">
-							<option value="INSPECTOR">INSPECTOR</option>
+							<option th:each="cargo : ${puestos}" th:value="${cargo}" th:text="${cargo}" th:selected="true">INSPECTOR</option>
 						</select>
 					</div>
 					<div class="campo">

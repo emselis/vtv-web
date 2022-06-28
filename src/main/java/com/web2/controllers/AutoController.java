@@ -96,6 +96,7 @@ public class AutoController {
 		return "auto/cargaAuto";
 	}
 
+	
 	@PostMapping("/guardarAuto")
 	public String guardarAuto(@Valid @ModelAttribute Auto auto, Errors errores, Model modelo, BindingResult resultado,
 			RedirectAttributes atributos) {
@@ -124,9 +125,9 @@ public class AutoController {
 //		autoService.guardarAuto(auto);
 		System.out.println("Auto guardado OK");
 		System.out.println(auto.getDominio());
-		System.out.println(auto.getIdMarca());
-		System.out.println(auto.getIdModelo());
-		System.out.println(auto.getIdVersion());
+		System.out.println(auto.getMarca().getMarca());
+		System.out.println(auto.getModelo().getModelo());
+		System.out.println(auto.getVersion().getVersion());
 //		System.out.println(auto.toString());
 
 		atributos.addFlashAttribute("success", "Auto creado correctamente.");

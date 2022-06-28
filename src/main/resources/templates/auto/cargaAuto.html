@@ -29,21 +29,21 @@
 
 				<div class="campo">
 					<label for="marcas">Marca</label>
-					<select th:name="marcas" id="marcas" th:field="*{idMarca}">
+					<select th:name="marcas" id="marcas" th:field="*{Marca}">
 						<option th:each="marca : ${marcas}" th:value="${marca.idMarca}" th:text="${marca.marca}" th:selected="true">Marca</option>
 					</select>
 				</div>
 
 				<div class="campo">
 					<label for="modelo">Modelo</label>
-					<select th:name="modelos" id="modelos" th:field="*{idModelo}">
+					<select th:name="modelos" id="modelos" th:field="*{Modelo}">
 						<option th:each="modelo : ${modelos}" th:value="${modelo.idModelo}" th:text="${modelo.modelo}" th:selected="true">Modelo</option>
 					</select>
 				</div>
 				
 				<div class="campo">
 					<label for="version">Version</label>
-					<select th:name="versiones" id="versiones" th:field="*{idVersion}">
+					<select th:name="versiones" id="versiones" th:field="*{Version}">
 						<option th:each="ver : ${versiones}" th:value="${ver.idVersion}" th:text="${ver.version}" th:selected="true">Version</option>
 					</select>
 				</div>

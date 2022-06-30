@@ -23,9 +23,7 @@ public class Marca implements Serializable{
 	
 	private String marca;
 	
-	
 
-	
 //	@OneToMany(mappedBy = "marca")
 //	private List<Modelo> modelos;
 	

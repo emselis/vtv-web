@@ -27,8 +27,8 @@
                <th>Marca:</th>
                <th>Modelo:</th>
                <th>Version:</th>
-               <th>Editar:</th>
-               <th>Eliminar:</th>
+               <!-- <th>Editar:</th> -->
+               <!-- <th>Eliminar:</th> -->
             </tr>
 
             <tr>
@@ -37,9 +37,9 @@
                <td th:text="${auto.marca.marca}">Mostrar Marca</td>
                <td th:text="${auto.modelo.modelo}">Mostrar Modelo</td>
                <td th:text="${auto.version.version}">Mostrar Version</td>
-               <td><a th:href="@{/auto/editarAuto(dominio=${auto.dominio})}" th:text="Editar"></td>
-               <!-- <td><a th:href="@{/editarEmpleado/} + ${empleado.dominio}" th:text="Editar" ></td> -->
-               <td><a th:href="@{/auto/eliminarAuto/} + ${auto.dominio}" th:text="Eliminar"></td>
+               <!-- <td><a th:href="@{/auto/editarAuto(dominio=${auto.dominio})}" th:text="Editar"></td> -->
+               			<!-- <td><a th:href="@{/editarEmpleado/} + ${empleado.dominio}" th:text="Editar" ></td> -->
+               <!-- <td><a th:href="@{/auto/eliminarAuto/} + ${auto.dominio}" th:text="Eliminar"></td> -->
             </tr>
          </table>
       </div>

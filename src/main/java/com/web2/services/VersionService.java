@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.web2.entities.Modelo;
 import com.web2.entities.Version;
 import com.web2.repositories.VersionRepository;
 
@@ -24,8 +25,8 @@ public class VersionService{
 		return (List<Version>) versionRepository.findAll();
 	}
 
-//	public List<Version> versionPorModelo(@Param("idMarca") int idModelo){
-//		return (List<Version>) versionRepository.listarPorModelo(idModelo);
-//	}
+	public List<Version> versionPorModelo(@Param("modelo") Modelo modelo){
+		return (List<Version>) versionRepository.listarPorModelo(modelo);
+	}
 	
 }

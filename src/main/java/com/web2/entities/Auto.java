@@ -20,15 +20,18 @@ public class Auto implements Serializable{
 	
 //	@NotEmpty(message="Debe ingrese el nombre")
 //	@Size(min=2, max=30, message="El nombre debe tener entre 2 y 30 caracteres.")
-	private String propietario;
-	
+//	private String propietario;
 //	private int idMarca;
 //	private int idModelo;
 //	private int idVersion;
-	
+
 	private Marca marca;
 	private Modelo modelo;
 	private Version version;
+	private String propietario;
+	
+//	@ManyToOne()
+//	private Cliente duenio;
 	
 	@OneToMany(mappedBy = "idMarca")
 	private List<Marca> marcas;

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web2.entities.Auto;
+import com.web2.entities.Marca;
 import com.web2.services.AutoService;
 import com.web2.services.MarcaService;
 import com.web2.services.ModeloService;
@@ -85,6 +86,71 @@ public class AutoController {
 		modelo.addAttribute("versiones", versiones);
 		return modelo;
 	}
+	
+	
+	@GetMapping("/cargaAutoMarca")
+	public String mDominioMarca(Model modelo, Auto auto) {
+
+		modelo.addAttribute("auto", auto);
+		var marcas = marcaService.listarMarcas();
+		modelo.addAttribute("marcas", marcas);
+		return "auto/cargaAutoMarca";
+	}
+	
+	@PostMapping("/cargaAutoMarca")
+	public String lDominioMarca(@Valid @ModelAttribute Auto auto, Errors errores, Model modelo, BindingResult resultado) {
+
+		if (errores.hasErrors()) {
+			modelo.addAttribute("auto", auto);
+			var marcas = marcaService.listarMarcas();
+			modelo.addAttribute("marcas", marcas);
+			System.out.println("Errores al cargar el auto 1");
+			return "auto/cargaAutoMarca";
+		}
+		if (!validarDominio(auto.getDominio())) {
+			FieldError error = new FieldError("auto", "dominio", "Dominio con formato incorrecto");
+			resultado.addError(error);
+			modelo.addAttribute("auto", auto);
+			var marcas = marcaService.listarMarcas();
+			modelo.addAttribute("marcas", marcas);
+			System.out.println("Errores al cargar el auto 2");
+			return "auto/cargaAutoMarca";
+		}
+		
+		modelo.addAttribute("auto", auto);
+		System.out.println(auto);
+		var modelos = modeloService.modeloPorMarca(auto.getMarca());
+//		var modelos = modeloService.listarModelos();
+		modelo.addAttribute("modelos", modelos);
+		return "/auto/cargaModelo";		
+	}
+	
+	@PostMapping("/cargaModelo")
+	public String mModelo(Model modelo, Auto auto) {
+				
+		modelo.addAttribute("auto", auto);
+		System.out.println(auto);
+		
+		var versiones = versionService.versionPorModelo(auto.getModelo());	//modelosPorMarca(auto.getMarca().getIdMarca());
+		modelo.addAttribute("versiones", versiones);
+		
+		return "auto/cargaVersion";
+	}
+	
+	@PostMapping("/cargaVersion")
+	public String lModelo(Model modelo, Auto auto) {
+				
+		modelo.addAttribute("auto", auto);
+		System.out.println(auto);
+		
+		return "/informes/muestraAuto";		
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	@GetMapping("/cargaAuto")

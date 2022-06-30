@@ -1,5 +1,6 @@
 package com.web2.repositories;
 
+import com.web2.entities.Marca;
 import com.web2.entities.Modelo;
 
 import java.util.List;
@@ -12,8 +13,7 @@ import org.springframework.stereotype.Repository;
 @Repository("modeloRepository")
 public interface ModeloRepository extends JpaRepository<Modelo, Integer> {
 	
-//	@Query("SELECT m FROM Modelo m WHERE m.idMarca = (:idMarca)")
-//	public abstract List<Modelo> listarPorMarca(
-//			@Param("idMarca") int idMarca);
+	@Query("SELECT m FROM Modelo m WHERE m.marca = (:marca)")
+	public abstract List<Modelo> listarPorMarca(@Param("marca") Marca marca);
 	
 }

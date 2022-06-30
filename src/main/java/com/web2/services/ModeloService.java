@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.web2.entities.Marca;
 import com.web2.entities.Modelo;
 import com.web2.repositories.ModeloRepository;
 
@@ -24,9 +25,9 @@ public class ModeloService{
 		return (List<Modelo>) modeloRepository.findAll();
 	}
 	
-//	public List<Modelo> modeloPorMarca(@Param("idMarca") int idMarca){
-//		return (List<Modelo>) modeloRepository.listarPorMarca(idMarca);
-//	}
+	public List<Modelo> modeloPorMarca(@Param("marca") Marca marca){
+		return (List<Modelo>) modeloRepository.listarPorMarca(marca);
+	}
 	
 }
 

@@ -25,7 +25,7 @@ public class Version implements Serializable{
 	
     @ManyToOne
     @JoinColumn(name = "idModelo")
- 	private Modelo modelos;
+ 	private Modelo modelo;
 	
 	
 }

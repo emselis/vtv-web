@@ -13,7 +13,7 @@
 
 	<div th:replace="layout/plantilla :: nav-superior"></div>
 
-
+	<h2 th:text="${titulo}" class="centrar-texto">Lista Propietarios</h2>
 	<div class="grid centrar-columnas" th:if="${clientes != null and !clientes.empty}">
 		<table border="1">
 			<tr>

@@ -27,26 +27,35 @@
 						<span th:if="${#fields.hasErrors('dominio')}" th:errors="*{dominio}">Error Dominio</span>
 				</div>
 
-				<!-- <div class="campo">
+				<div class="campo">
 					<label for="marcas">Marca</label>
-					<select th:name="marcas" id="marcas" th:field="*{marca}">
+					<select th:name="marcas" id="marcas" >
 						<option th:each="marca : ${marcas}" th:value="${marca.idMarca}" th:text="${marca.marca}" th:selected="true">Marca</option>
 					</select>
-				</div> -->
+				</div>
 
-				<!-- <div class="campo">
+				<div class="campo">
 					<label for="modelo">Modelo</label>
-					<select th:name="modelos" id="modelos" th:field="*{idModelo}">
+					<select th:name="modelos" id="modelos" >
 						<option th:each="modelo : ${modelos}" th:value="${modelo.idModelo}" th:text="${modelo.modelo}" th:selected="true">Modelo</option>
 					</select>
 				</div>
 				
 				<div class="campo">
 					<label for="version">Version</label>
-					<select th:name="versiones" id="versiones" th:field="*{idVersion}">
+					<select th:name="versiones" id="versiones" >
 						<option th:each="ver : ${versiones}" th:value="${ver.idVersion}" th:text="${ver.version}" th:selected="true">Version</option>
 					</select>
-				</div> -->
+				</div>
+
+				<div class="campo">
+					<label for="propietario">Propietario</label>
+					<select th:name="propietarios" id="propietarios" >
+						<option th:each="prop : ${propietarios}" th:value="${prop.documento}" th:text="${prop.nombre} + ' ' + ${prop.apellido}"
+							th:selected="true">Propietario</option>
+					</select>
+					<span th:if="${#fields.hasErrors('propietario')}" th:errors="*{propietario}">Error Propietario</span>
+				</div>
 
 				<div class="campo enviar">
 					<input type="submit" value="Enviar" class="btn btn-primario">

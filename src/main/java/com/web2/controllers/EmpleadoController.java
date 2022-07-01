@@ -100,6 +100,7 @@ public class EmpleadoController {
 	
 	@GetMapping("/listarEmpleados")
 	public String listarE(Model model) {
+		model.addAttribute("titulo", "Lista de Empleados");
 		var empleados = empleadoService.listarEmpleados();
 		model.addAttribute("empleados", empleados);
 		return "informes/listarEmpleados";

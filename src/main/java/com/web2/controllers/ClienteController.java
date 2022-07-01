@@ -53,6 +53,7 @@ public class ClienteController {
 	
 	@GetMapping("/listarClientes")
 	public String listarC(Model model) {
+		model.addAttribute("titulo", "Lista de Propietarios");
 		var clientes = clienteService.listarClientes();
 		model.addAttribute("clientes", clientes);
 		return "informes/listarClientes";

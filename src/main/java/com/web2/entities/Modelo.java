@@ -23,7 +23,7 @@ public class Modelo implements Serializable{
 //	private int idMarca;
 	
 	
-    @ManyToOne//(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idMarca")
  	private Marca marca;
 	

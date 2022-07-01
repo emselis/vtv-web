@@ -20,23 +20,27 @@
       </div>
   
       <div class="grid centrar-columnas" th:if="${auto != null}">
-         <table border="1">
+         <table border="1" class="centrar-texto">
             <tr>
                <th>Dominio:</th>
-               <th>Propietario:</th>
                <th>Marca:</th>
                <th>Modelo:</th>
                <th>Version:</th>
+               <th>Propietario:</th>
+               <th>Exento:</th>
+               <th>Estado:</th>
                <!-- <th>Editar:</th> -->
                <!-- <th>Eliminar:</th> -->
             </tr>
 
             <tr>
                <td th:text="${auto.dominio}">Mostrar Dominio</td>
-               <td text="">Mostrar Propietario</td>
                <td th:text="${auto.marca.marca}">Mostrar Marca</td>
                <td th:text="${auto.modelo.modelo}">Mostrar Modelo</td>
                <td th:text="${auto.version.version}">Mostrar Version</td>
+               <td th:text="${auto.propietario.nombre} + ' ' + ${auto.propietario.apellido}">Mostrar Propietario</td>
+               <td th:text="${auto.propietario.exento}">Mostrar Exento</td>
+               <td th:text="${auto.estado}">Mostrar Estado</td>
                <!-- <td><a th:href="@{/auto/editarAuto(dominio=${auto.dominio})}" th:text="Editar"></td> -->
                			<!-- <td><a th:href="@{/editarEmpleado/} + ${empleado.dominio}" th:text="Editar" ></td> -->
                <!-- <td><a th:href="@{/auto/eliminarAuto/} + ${auto.dominio}" th:text="Eliminar"></td> -->

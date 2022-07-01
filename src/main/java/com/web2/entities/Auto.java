@@ -1,7 +1,6 @@
 package com.web2.entities;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -18,29 +17,36 @@ public class Auto implements Serializable{
 	@Size(min=6, max=7, message="El dominio debe tener entre 6 y 7 dígitos.")
 	private String dominio;
 	
-//	@NotEmpty(message="Debe ingrese el nombre")
-//	@Size(min=2, max=30, message="El nombre debe tener entre 2 y 30 caracteres.")
-//	private String propietario;
-//	private int idMarca;
-//	private int idModelo;
-//	private int idVersion;
 
+	@ManyToOne
+	@JoinColumn(name = "idMarca")
 	private Marca marca;
+	
+	@ManyToOne
+	@JoinColumn(name = "idModelo")
 	private Modelo modelo;
+	
+	@ManyToOne
+	@JoinColumn(name = "idVersion")
 	private Version version;
-	private String propietario;
+	
+	@ManyToOne
+	@JoinColumn(name = "propietario")
+	private Cliente propietario;
+	
+	private String estado = "SIN VERIFICAR";
 	
 //	@ManyToOne()
 //	private Cliente duenio;
 	
-	@OneToMany(mappedBy = "idMarca")
-	private List<Marca> marcas;
-	
-	@OneToMany(mappedBy = "idModelo")
-	private List<Modelo> modelos;
-
-	@OneToMany(mappedBy = "idVersion")
-	private List<Version> versiones;
+//	@OneToMany(mappedBy = "idMarca")
+//	private List<Marca> marcas;
+//	
+//	@OneToMany(mappedBy = "idModelo")
+//	private List<Modelo> modelos;
+//
+//	@OneToMany(mappedBy = "idVersion")
+//	private List<Version> versiones;
 
 }
 

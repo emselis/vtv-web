@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web2.entities.Auto;
-import com.web2.entities.Marca;
 import com.web2.services.AutoService;
+import com.web2.services.ClienteService;
 import com.web2.services.MarcaService;
 import com.web2.services.ModeloService;
 import com.web2.services.VersionService;
@@ -36,6 +36,8 @@ public class AutoController {
 	@Qualifier("versionService")
 	private VersionService versionService;
 	
+	@Autowired
+	private ClienteService clienteService;
 	
 	private boolean validarDominio(String patente) {
 
@@ -88,7 +90,7 @@ public class AutoController {
 	}
 	
 	
-	@GetMapping("/cargaAutoMarca")
+	@GetMapping("/cargaAuto")
 	public String mDominioMarca(Model modelo, Auto auto) {
 
 		modelo.addAttribute("auto", auto);
@@ -117,10 +119,12 @@ public class AutoController {
 			return "auto/cargaAutoMarca";
 		}
 		
+		String patente = auto.getDominio().toUpperCase();
+		auto.setDominio(patente);
+		
 		modelo.addAttribute("auto", auto);
 		System.out.println(auto);
 		var modelos = modeloService.modeloPorMarca(auto.getMarca());
-//		var modelos = modeloService.listarModelos();
 		modelo.addAttribute("modelos", modelos);
 		return "/auto/cargaModelo";		
 	}
@@ -143,6 +147,22 @@ public class AutoController {
 		modelo.addAttribute("auto", auto);
 		System.out.println(auto);
 		
+		var propietarios = clienteService.listarClientes();
+		modelo.addAttribute("propietarios", propietarios);
+		
+		return "/auto/cargaPropietario";
+	}
+	
+	@PostMapping("/cargaPropietario")
+	public String mPropietario(Model modelo, Auto auto) {
+				
+		modelo.addAttribute("auto", auto);
+		System.out.println(auto);
+		System.out.println(auto.getPropietario().getNombre() + " " + auto.getPropietario().getApellido());
+		
+		autoService.guardarAuto(auto);
+		System.out.println("Auto guardado OK");
+
 		return "/informes/muestraAuto";		
 	}
 	
@@ -151,9 +171,7 @@ public class AutoController {
 	
 	
 	
-	
-	
-	@GetMapping("/cargaAuto")
+	@GetMapping("/cargaAuto2")
 	public String agregaAuto(Model modelo) {
 		
 		modelo.addAttribute("auto", new Auto());

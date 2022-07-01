@@ -23,7 +23,7 @@ public class Version implements Serializable{
 //	private int idModelo;
 	
 	
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idModelo")
  	private Modelo modelo;
 	

@@ -1,12 +1,12 @@
 package com.web2.entities;
 
-import java.util.List;
 
 import javax.persistence.*;
 
-import lombok.Data;
+import lombok.*;
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 @Entity
 @Table(name = "clientes")
 @PrimaryKeyJoinColumn(referencedColumnName = "documento")

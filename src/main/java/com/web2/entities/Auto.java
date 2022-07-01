@@ -8,7 +8,8 @@ import javax.validation.constraints.*;
 import lombok.Data;
 
 @Data
-@Entity(name = "automoviles")
+@Entity
+@Table(name = "automoviles")
 public class Auto implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -36,8 +37,6 @@ public class Auto implements Serializable{
 	
 	private String estado = "SIN VERIFICAR";
 	
-//	@ManyToOne()
-//	private Cliente duenio;
 	
 //	@OneToMany(mappedBy = "idMarca")
 //	private List<Marca> marcas;

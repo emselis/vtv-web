@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.web2.entities.Auto;
+import com.web2.entities.Cliente;
 import com.web2.repositories.AutoRepository;
 
 @Service("autoService")
@@ -29,17 +30,31 @@ public class AutoService {
 		autoRepository.save(auto);
 	}
 
+	@Transactional(readOnly = true)
+	public Auto buscarPorDominio(Auto auto) {
+		//findById devuelve objeto "Opcional", entonces:
+		//Lanzamos excepción con método .orElseThrow o mostramos null con .orElse
+		return autoRepository.findById(auto.getDominio()).orElse(null);
+	}	
+	
+	public List<Auto> buscarPorPropietario(Cliente propietario) {
+		return autoRepository.findByPropietario(propietario);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Auto> buscarPorEstado(Auto auto) {
+		//findById devuelve objeto "Opcional", entonces:
+		//Lanzamos excepción con método .orElseThrow o mostramos null con .orElse
+		return autoRepository.findByEstado(auto.getEstado());
+	}	
+	
+	
+	
 	@Transactional
 	public void eliminarAuto(Auto auto) {
 		autoRepository.delete(auto);
 	}
 
-	@Transactional(readOnly = true)
-	public Auto encontrarAuto(Auto auto) {
-		//findById devuelve objeto "Opcional", entonces:
-		//Lanzamos excepción con método .orElseThrow o mostramos null con .orElse
-		return autoRepository.findById(auto.getDominio()).orElse(null);
-	}	
 
 	// Sacar comentario cuando Entity Inspeccion este mapeada !!!  VER AutoRepository
 //	public List<Auto> autosPorEstado(

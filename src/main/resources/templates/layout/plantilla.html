@@ -38,13 +38,13 @@
 						<li><a href="#" th:href="@{/inspecciones/iniciaInspeccion}">Nueva</a></li>
 						<li><a href="#" th:href="@{/auto/cargaAuto}">Carga Auto</a></li>
 						<!-- <li><a href="#" th:href="@{/}">Moto</a></li> -->
-						<li><a href="#" th:href="@{/}">Buscar un Dominio</a></li>
-						<li><a href="#" th:href="@{/}">Buscar por Propietario</a></li>
-						<li><a href="#" th:href="@{/}">Listar por</a>
+						<li><a href="#" th:href="@{/auto/buscaDominio}">Buscar un Dominio</a></li>
+						<li><a href="#" th:href="@{/auto/buscaPropietario}">Buscar por Propietario</a></li>
+						<li><a href="#" th:href="@{/auto/listaAutosTodos}">Listar por</a>
 							<ul>
-								<li><a href="#" th:href="@{/}">Aptos</a></li>
-								<li><a href="#" th:href="@{/}">Condicionales</a></li>
-								<li><a href="#" th:href="@{/}">Rechazados</a></li>
+								<li><a href="#" th:href="@{/auto/listaAutos(estado=APTO)}">Aptos</a></li>
+								<li><a href="#" th:href="@{/auto/listaAutos(estado=CONDICIONAL)}">Condicionales</a></li>
+								<li><a href="#" th:href="@{/auto/listaAutos(estado=RECHAZADO)}">Rechazados</a></li>
 							</ul>
 						</li>
 					</ul>

@@ -1,6 +1,8 @@
 package com.web2.entities;
 
 
+import java.util.List;
+
 import javax.persistence.*;
 
 import lombok.*;
@@ -16,7 +18,7 @@ public class Cliente extends Persona{
 
 	private String exento;
 	
-//	@OneToMany(mappedBy = "dominio")
+//	@OneToMany(mappedBy = "propietario")
 //	private List<Auto> autos;
 	
 }

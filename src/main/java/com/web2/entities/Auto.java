@@ -1,6 +1,7 @@
 package com.web2.entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -36,6 +37,9 @@ public class Auto implements Serializable{
 	private Cliente propietario;
 	
 	private String estado = "SIN VERIFICAR";
+	
+	private LocalDate ultimaVerificacion;
+	
 	
 	
 //	@OneToMany(mappedBy = "idMarca")

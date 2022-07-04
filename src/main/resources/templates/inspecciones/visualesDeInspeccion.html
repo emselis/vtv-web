@@ -13,17 +13,17 @@
 
    <div th:replace="layout/plantilla :: nav-superior"></div>
    <main class="contenedor">
-      <h2 class="centrar-texto">Cargando nueva Inspección</h2>
+      <h2 class="centrar-texto">Verificación de componentes visuales</h2>
       <hr>
-      <form th:action="@{/inspecciones/asignaInspector}" method="post" th:object="${inspeccion}">
+      <form th:action="@{/inspecciones/insertarVisuales}" method="post" th:object="${inspeccion}">
          <!-- <label for="fecha" th:field="*{fecha}" name="fecha" th:text="'Fecha de inspeccion: ' + *{fecha}"></label> -->
-         <h4 class="centrar-texto" >Seleccione un Inspector</h4>
+         <h4 class="centrar-texto" >Resultado del control</h4>
          <div >
             <div class="campo centrar-texto">
-               <label for="empleado">Inspector</label>
-               <select th:field="*{inspector}" name="inspector" id="inspector">
-                  <option th:each="empleado : ${empleados}" th:value="${empleado.documento}"
-                     th:text="${empleado.nombre} + ' ' + ${empleado.apellido}" th:selected="true">Inspector n"></option>
+               <label for="empleado">visuales:</label>
+               <select th:field="*{visuales}" name="visuales" id="visuales">
+                  <option th:value="*{visuales}" text="PASO" th:selected="true">Ok</option>
+                  <option th:value="*{visuales}" text="NO PASO" th:selected="true">Mal</option>
                </select>
             </div>
             <div class="campo centrar-texto enviar">

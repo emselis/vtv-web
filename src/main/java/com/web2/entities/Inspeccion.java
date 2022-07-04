@@ -1,6 +1,6 @@
 package com.web2.entities;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.*;
 
@@ -15,11 +15,19 @@ public class Inspeccion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idInspeccion;
 	
-	private LocalDateTime fecha;
+	private LocalDate fecha;
+	
+	@ManyToOne
+	@JoinColumn(name="empleado")
 	private Empleado inspector;
-	private String conductor;
-	private String propietario;
-	private String estado;
+
+	@ManyToOne
+	@JoinColumn(name="dominio")
+	private Auto auto;
+	
 	private String observaciones;
+	private String medibles = "NO PASO";
+	private String visuales = "NO PASO";
+	private String estado = "SIN VERIFICAR";
 	
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web2.entities.Empleado;
+import com.web2.services.ClienteService;
 import com.web2.services.EmpleadoService;
 import com.web2.enumeraciones.*;
 
@@ -20,6 +21,10 @@ public class EmpleadoController {
 	@Autowired
 //	@Qualifier("empleadoService")
 	private EmpleadoService empleadoService;
+	
+	@Autowired
+//	@Qualifier("clienteService")
+	private ClienteService clienteService;
 	
 	@GetMapping("/cargaEmpleado")
 	public String agregaEmpleado(Model modelo, Empleado empleado) {
@@ -52,7 +57,7 @@ public class EmpleadoController {
 		if(empleadoService.encontrarEmpleado(empleado) != null) {
 			FieldError error = new FieldError("empleado", "documento", "Ya existe un emleado con este documento.");
 			resultado.addError(error);
-		}	
+		}
 		
 		// Verifica si DNI también en tabla clientes: <SI> guarda solo campos en tabla "empleados" -- <NO> Guarda empleado normalmente.
 		// Como guardar: DNI y campos de empleado (activo + puesto) Solo en tabla "empleados" ? solo por Entity?
@@ -60,8 +65,21 @@ public class EmpleadoController {
 		if(resultado.hasErrors()) {
 			modelo.addAttribute("empleado", empleado);
 			modelo.addAttribute("puestos", PuestosEmpleados.values());	// Puestos de Enum
-			System.out.println("Errores al cargar el empleado");
+			System.out.println(resultado);
 			return "persona/cargaEmpleado";
+		}
+		
+		if(clienteService.encontrarCliente(empleado.getDocumento()) != null) {
+			var cliente = clienteService.encontrarCliente(empleado.getDocumento());
+			System.out.println("Se inserta empleado a tabla. Ya existe un cliente con ese documento.");
+			empleado.setNombre(cliente.getNombre());
+			empleado.setApellido(cliente.getApellido());
+			empleadoService.insertarEmpleado(empleado);
+			System.out.println("Empleado insertado OK");
+			modelo.addAttribute("empleado", empleado);
+			System.out.println(empleado.toString().toString());
+			atributos.addFlashAttribute("success", "Empleado creado correctamente.");
+			return "/informes/muestraEmpleado";
 		}
 		
 		empleadoService.guardarEmpleado(empleado);
@@ -139,7 +157,6 @@ public class EmpleadoController {
 		return "informes/muestraEmpleado";
 	}	
 	
-
 }
 
 

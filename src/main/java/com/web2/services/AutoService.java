@@ -45,6 +45,7 @@ public class AutoService {
 	public List<Auto> buscarPorEstado(Auto auto) {
 		//findById devuelve objeto "Opcional", entonces:
 		//Lanzamos excepción con método .orElseThrow o mostramos null con .orElse
+		
 		return autoRepository.findByEstado(auto.getEstado());
 	}	
 	

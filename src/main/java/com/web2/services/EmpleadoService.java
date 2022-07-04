@@ -30,6 +30,14 @@ public class EmpleadoService {
 	}
 
 	@Transactional
+	public void insertarEmpleado(Empleado empleado) {
+		var documento = empleado.getDocumento();
+		var estado = empleado.getEstado();
+		var puesto = empleado.getPuesto();
+		empleadoRepository.insertarEmpl(documento, puesto, estado);
+	}
+	
+	@Transactional
 	public void eliminarEmpleado(Empleado empleado) {
 		empleadoRepository.delete(empleado);
 	}

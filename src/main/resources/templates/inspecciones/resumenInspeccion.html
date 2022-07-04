@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org" xmlns"http://www.w3.org/1999/xhtml">
+
+<head>
+   <meta charset="UTF-8">
+   <title>Carga de Inspecciones</title>
+   <link rel="stylesheet" href="/css/normalize.css">
+   <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+   <header th:replace="layout/plantilla :: header"></header>
+
+   <div th:replace="layout/plantilla :: nav-superior"></div>
+   <main class="contenedor" th:object="${inspeccion}">
+      <h2 class="centrar-texto">Resumen de Inspección en curso</h2>
+      <hr>
+
+      <div class="centrar-texto" th:if="${inspeccion.idInspeccion != 0}">
+         <label for="numero" th:text="'Inspección Nro: ' + *{idInspeccion}"></label>
+         <label for="fecha" th:text="'Fecha de Inspección: ' + *{fecha}"></label>
+      </div>
+
+      <!-- <h4 class="centrar-texto">Inspector</h4> -->
+      <div class="grid centrar-columnas">
+         <table border="1">
+            <tr>
+               <th>Nombre:</th>
+               <th>Apellido:</th>
+               <th>Puesto:</th>
+            </tr>
+            <tr>
+               <td th:text="*{inspector.nombre}">Mostrar Nombre</td>
+               <td th:text="*{inspector.apellido}">Mostrar Apellido</td>
+               <td th:text="*{inspector.puesto}">Mostrar Puesto</td>
+            </tr>
+         </table>
+      </div>
+      <br>
+
+      <!-- <h4 class="centrar-texto">Vehiculo</h4> -->
+      <div class="grid centrar-columnas">
+         <table border="1" class="centrar-texto">
+            <tr>
+               <th>Dominio:</th>
+               <th>Marca:</th>
+               <th>Modelo:</th>
+               <th>Version:</th>
+            </tr>
+            <tr>
+               <td th:text="*{auto.dominio}">Mostrar Dominio</td>
+               <td th:text="*{auto.marca.marca}">Mostrar Marca</td>
+               <td th:text="*{auto.modelo.modelo}">Mostrar Modelo</td>
+               <td th:text="*{auto.version.version}">Mostrar Version</td>
+            </tr>
+         </table>
+      </div>
+      <br>
+
+      <!-- <h4 class="centrar-texto">Propietario</h4> -->
+      <div class="grid centrar-columnas">
+         <table border="1">
+            <tr>
+               <th>Documento:</th>
+               <th>Nombre:</th>
+               <th>Apellido:</th>
+               <th>Exento:</th>
+            </tr>
+            <tr>
+               <td th:text="*{auto.propietario.documento}">Mostrar Documento</td>
+               <td th:text="*{auto.propietario.nombre}">Mostrar Nombre</td>
+               <td th:text="*{auto.propietario.apellido}">Mostrar Apellido</td>
+               <td th:text="*{auto.propietario.exento}">Mostrar Exento</td>
+            </tr>
+         </table>
+      </div>
+      <div class="grid centrar-columnas">
+         <table border="1">
+            <tr>
+               <th>Inspecciones Medibles:</th>
+               <th>Inspecciones Visuales:</th>
+               <th>Estado del Vehiculo:</th>
+            </tr>
+            <tr>
+               <td th:text="*{medibles}">Mostrar Medibles</td>
+               <td th:text="*{visuales}">Mostrar Visuales</td>
+               <td th:text="*{estado}">Mostrar Estado</td>
+            </tr>
+         </table>
+      </div>
+      <br>
+     
+      
+
+      <!-- <div class="campo enviar centrar-texto">
+         <form th:action="@{/inspecciones/guardarControles}" method="post" th:object="inspeccion">
+            <input type="hidden" name="idInspeccion" th:field="*{idInspeccion}" value="*{idInspeccion}"/>
+            <span th:if="${inspeccion.visuales == 'NO PASO'}">
+               <button name="visuales" type="submit" value="visuales">Inspecciones Visuales</button>
+            </span>
+            <span th:if="${inspeccion.visuales == 'PASO'}">
+               <label>Inspecciones Visuales OK</label>
+            </span>
+            <span th:if="${inspeccion.medibles == 'NO PASO'}">
+               <button name="medibles" type="submit" value="medibles">Inspecciones Medibles</button>
+            </span>
+            <span th:if="${inspeccion.medibles == 'PASO'}">
+               <label>Inspecciones Medibles OK</label>
+            </span>
+         </form>
+      </div> -->
+
+   </main>
+
+
+   <footer th:replace="layout/plantilla :: footer"></footer>
+</body>
+
+</html>

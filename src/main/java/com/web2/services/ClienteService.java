@@ -40,4 +40,10 @@ public class ClienteService {
 		return clienteRepository.findById(cliente.getDocumento()).orElse(null);
 	}	
 
+	@Transactional(readOnly = true)
+	public Cliente encontrarCliente(String documento) {
+		//findById devuelve objeto "Opcional", entonces:
+		//Lanzamos excepción con método .orElseThrow o mostramos null con .orElse
+		return clienteRepository.findById(documento).orElse(null);
+	}
 }

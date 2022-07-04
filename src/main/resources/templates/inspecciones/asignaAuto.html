@@ -14,30 +14,50 @@
    <div th:replace="layout/plantilla :: nav-superior"></div>
    <main class="contenedor">
       <h2 class="centrar-texto">Cargando nueva Inspección</h2>
-
       <hr>
-      <!-- <br> -->
-      <div class="grid centrar-columnas" th:field="empleado" th:if="${empleado != null}">
-            <h4 for="nombre" th:text="'Inspector asignado: ' + ${empleado.nombre} + ' ' +
-             ${empleado.apellido}">Mostrar Nombre></h4>
-      </div>
+      <form th:action="@{/inspecciones/asignaAuto}" method="post" th:object="${inspeccion}">
+
+         <div class="campo centrar-texto">
+            <h4 class="centrar-texto">Inespector</h4>
+            <label for="inspectorN">Nombre</label>
+            <label type="text" name="inspectorN" th:text="*{inspector.nombre}" readonly ></label>
+            <br>
+            <label for="inspectorN">Apellido</label>
+            <label type="text" name="inspectorA" th:text="*{inspector.apellido}" readonly ></label>
+            <input type="hidden" name="inspector" th:field="*{inspector}" th:text="*{inspector.documento}"/>
+         </div>
+
+         <h4 class="centrar-texto">Seleccione un Dominio</h4>
+         <div class="campo centrar-texto">
+            <label for="auto">Vehiculo</label>
+            <select th:field="*{auto}" name="auto" id="auto">
+               <option th:each="auto : ${autos}" th:value="${auto.dominio}" th:text="${auto.dominio}"
+                  th:selected="true">Vehiculo></option>
+            </select>
+         </div>
+
+         <div class="campo centrar-texto enviar">
+            <input type="submit" value="Siguiente" class="btn btn-primario" />
+         </div>
+      </form>
 
       <hr>
       <br>
-      
-      <h3 class="centrar-texto">Ingrese datos del conductor</h3>
-      <div class="grid centrar-columnas">
-			<form th:action="@{/inspecciones/asignarPropietario}" method="get" th:object="${cliente}"> 
-				<div class="campo">
-					<label for="documento">N° Documento</label>
-					<input type="number" placeholder="Documento" id="documento" name="documento" th:field="*{documento}" />
-					<span th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}">Error Documento</span>
-				</div>
-				<div class="campo enviar">
-					<input type="submit" value="Buscar" class="btn btn-primario">
-				</div>
-			</form>
-		</div>
+
+      <!-- <h3 class="centrar-texto">Ingrese datos del conductor</h3>
+         <div class="grid centrar-columnas">
+            <form th:action="@{/inspecciones/asignarPropietario}" method="get" th:object="${cliente}">
+               <div class="campo">
+                  <label for="documento">N° Documento</label>
+                  <input type="number" placeholder="Documento" id="documento" name="documento"
+                     th:field="*{documento}" />
+                  <span th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}">Error Documento</span>
+               </div>
+               <div class="campo enviar">
+                  <input type="submit" value="Buscar" class="btn btn-primario">
+               </div>
+            </form>
+         </div> -->
 
 
       <!-- <h3 class="centrar-texto">Datos del Conductor</h3>

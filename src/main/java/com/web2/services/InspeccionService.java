@@ -30,10 +30,16 @@ public class InspeccionService{
 	}
 
 	@Transactional(readOnly = true)
-	public Inspeccion encontrarInspeccion(Inspeccion inspeccion) {
+	public Inspeccion encontrarInspeccion(long idInspeccion) {
 		//findById devuelve objeto "Opcional", entonces:
 		//Lanzamos excepción con método .orElseThrow o mostramos null con .orElse
-		return inspeccionRepository.findById(inspeccion.getIdInspeccion()).orElse(null);
+		return inspeccionRepository.findById(idInspeccion).orElse(null);
 	}
 
+	@Transactional(readOnly = true)
+	public Inspeccion encontrarInspeccion(String dominio) {
+		//findById devuelve objeto "Opcional", entonces:
+		//Lanzamos excepción con método .orElseThrow o mostramos null con .orElse
+		return inspeccionRepository.findByDominio(dominio);
+	}
 }

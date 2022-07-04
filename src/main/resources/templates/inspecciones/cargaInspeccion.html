@@ -15,100 +15,67 @@
    <main class="contenedor">
       <h2 class="centrar-texto">Cargando nueva Inspección</h2>
       <hr>
-      <h3 class="centrar-texto">Seleccione un Inspector</h3>
-      <div class="centrar-texto">
-         <label for="empleado">Inspector</label>
-         <select th:field="${empleados}" name="empleados" id="empleados">
-            <!-- th:field="${empleados}" th:each="empleado : ${empleados}"> -->
-            <option th:each="empleado : ${empleados}" th:value="${empleado.documento}"
-               th:text="${empleado.nombre} + ' ' + ${empleado.apellido}">Inspector n</td>
-         </select>
-      </div>
-      <!--        HASTA ACA         ------         CARGA INSPECTOR         -->
-      <br>
-      <hr>
+      <form th:action="@{/inspecciones/guardarInspeccion}" method="post" th:object="${inspeccion}">
 
-      <!-- <div class="grid centrar-columnas">
-			<form th:action="@{/encontrarCliente}" method="get" th:object="${cliente}"> 
-				<div class="campo">
-					<label for="documento">N° Documento</label>
-					<input type="number" placeholder="Documento" id="documento" name="documento" th:field="*{documento}" />
-					<span th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}">Error Documento</span>
-				</div>
-				<div class="campo enviar">
-					<input type="submit" value="Buscar" class="btn btn-primario">
-				</div>
-			</form>
-		</div> -->
+         <div class="campo centrar-texto">
+            <h4>Inespector</h4>
+            <label for="inspectorN">Nombre</label>
+            <label type="text" name="inspectorN" th:text="*{inspector.nombre}" readonly ></label>
+            <br>
+            <label for="inspectorN">Apellido</label>
+            <label type="text" name="inspectorA" th:text="*{inspector.apellido}" readonly ></label>
+            <input type="hidden" name="inspector" th:field="*{inspector}" value="*{inspector.documento}"/>
+         </div>
+         <hr>
+         <div class="campo centrar-texto">
+            <h4>Vehiculo</h4>
+            <label for="autoD">Dominio</label>
+            <label type="text" name="autoD" th:text="*{auto.dominio}" readonly></label>
+            <br>
+            <label for="autoMa">Marca</label>
+            <label type="text" name="autoMa" th:text="*{auto.marca.marca}" readonly></label>
+            <br>
+            <label for="autoMo">Modelo</label>
+            <label type="text" name="autoMo" th:text="*{auto.modelo.modelo}" readonly></label>
+            <input type="hidden" name="autoD" th:field="*{auto}" value="*{auto.dominio}"/>
+         </div>
+         <hr>
+         <div class="campo centrar-texto">
+            <h4>Propietario</h4>
+            <label for="propD">Documento</label>
+            <label type="text" name="propD" th:text="*{auto.propietario.documento}" readonly ></label>
+            <br>
+            <label for="propN">Nombre</label>
+            <label type="text" name="propN" th:text="*{auto.propietario.nombre}" readonly ></label>
+            <br>
+            <label for="propA">Apellido</label>
+            <label type="text" name="propA" th:text="*{auto.propietario.apellido}" readonly ></label>
+            <br>
+            <label for="propE">Exento</label>
+            <label type="text" name="propE" th:text="*{auto.propietario.exento}" readonly ></label>
+         </div>
 
-      <h3 class="centrar-texto">Datos del Conductor</h3>
-      <div class="grid centrar-columnas">
-         <form th:action="@{/guardarCliente}" method="post" th:object="${cliente}">
-            <div class="campo">
-               <label for="documento">N° Documento</label>
-               <input type="number" id="documento" name="documento" placeholder="Nro. documento"
-                  th:field="*{documento}" />
-               <span th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}">Error Documento</span>
-            </div>
-            <div class="campo">
-               <label for="nombre">Nombre</label>
-               <input type="text" id="nombre" name="nombre" placeholder="Nombre" th:field="*{nombre}" />
-               <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error Nombre</span>
-            </div>
-            <div class="campo">
-               <label for="apellido">Apellido</label>
-               <input type="text" id="apellido" name="apellido" placeholder="Apellidos" th:field="*{apellido}" />
-               <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Error Apellido</span>
-            </div>
-            <div class="campo">
-               <label>Propietario</label>
-               <input type="checkbox" id="propietario" checked th:field="*{exento}" value="SI"/>
-            </div>
-            <div class="campo enviar">
-               <input type="submit" value="Enviar" class="btn btn-primario">
-            </div>
-         </form>
-      </div>
-
-      <hr>
-      <h3 class="centrar-texto">Datos del Propietario</h3>
-      <!-- <div class="grid centrar-columnas">
-         <form th:action="@{/guardarCliente}" method="post" th:object="${cliente2}">
-            <div class="campo">
-               <label for="documento">N° Documento</label>
-               <input type="number" id="documento" name="documento" placeholder="Nro. documento"
-                  th:field="*{documento}" />
-               <span th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}">Error Documento</span>
-            </div>
-            <div class="campo">
-               <label for="nombre">Nombre</label>
-               <input type="text" id="nombre" name="nombre" placeholder="Nombre" th:field="*{nombre}" />
-               <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error Nombre</span>
-            </div>
-            <div class="campo">
-               <label for="apellido">Apellido</label>
-               <input type="text" id="apellido" name="apellido" placeholder="Apellidos" th:field="*{apellido}" />
-               <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Error Apellido</span>
-            </div>
-
-            <div class="campo enviar">
-               <input type="submit" value="Enviar" class="btn btn-primario">
-            </div>
-         </form>
-      </div> -->
-
-      <br>
-      <hr>
-      <br>
-
-
-      <br>
-      <hr>
-      <br>
+         <div class="campo centrar-texto">
+            <label for="empleado">Medibles:</label>
+            <select th:field="*{medibles}" name="medibles" id="medibles">
+               <option th:value="PASO" th:text="PASO" th:selected="true">Ok</option>
+               <option th:value="NO-PASO" th:text="NO-PASO" th:selected="true">Mal</option>
+            </select>
+         </div>
+         <div class="campo centrar-texto">
+            <label for="empleado">visuales:</label>
+            <select th:field="*{visuales}" name="visuales" id="visuales">
+               <option th:value="PASO" th:text="PASO" th:selected="true">Ok</option>
+               <option th:value="NO-PASO" th:text="NO-PASO" th:selected="true">Mal</option>
+            </select>
+         </div>
 
 
 
-
+         <div class="campo enviar centrar-texto">
+            <input type="submit" value="Enviar" class="btn btn-primario" />
+         </div>
+      </form>
 
    </main>
 

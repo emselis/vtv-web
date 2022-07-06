@@ -17,15 +17,22 @@ public class Version implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idVersion;
 	
-	private String version;
-	
-	// NO declarar el atributo de FK
-//	private int idModelo;
-	
+	private String version;	
 	
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idModelo")
  	private Modelo modelo;
+
+    
+    public Version () {}
+    
+	public Version(int idVersion, String version) {
+		super();
+		this.idVersion = idVersion;
+		this.version = version;
+	}
 	
+    
+    
 	
 }

@@ -21,11 +21,9 @@ public interface AutoRepository extends JpaRepository<Auto, String> {
 	@Query("SELECT a FROM Auto a WHERE a.estado = (:estado)")
 	public abstract List<Auto> findByEstado(@Param("estado") String estado);
 	
+	// SOLO PARA TEST
+	public abstract List<Auto> findByPropietario(String documento);
 	
-// 			Sacar comentario cuando Entity Inspeccion este mapeada !!!
-//	@Query("SELECT a FROM Auto a, Inspeccion i WHERE a.dominio = i.dominio AND i.estado = (:estado)")
-//	public abstract List<Auto> autosPorEstado(
-//			@Param("estado") String estado);
-	
+		
 	
 }

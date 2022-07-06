@@ -18,14 +18,21 @@ public class Modelo implements Serializable{
 	private int idModelo;
 	
 	private String modelo;
-	
-	// NO declarar el atributo de FK
-//	private int idMarca;
-	
-	
+		
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idMarca")
  	private Marca marca;
+
+    
+    public Modelo() {}
+    
+    
+	public Modelo(int idModelo, String modelo) {
+		super();
+		this.idModelo = idModelo;
+		this.modelo = modelo;
+	}
 	
 	
+    
 }

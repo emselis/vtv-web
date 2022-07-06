@@ -30,7 +30,7 @@ public class EmpleadoController {
 	public String agregaEmpleado(Model modelo, Empleado empleado) {
 		
 		modelo.addAttribute("empleado", empleado);
-		modelo.addAttribute("puestos", PuestosEmpleados.values());	// Puestos de Enum
+		modelo.addAttribute("puestos", PuestosEmpleados.values());
 		return "persona/cargaEmpleado";
 	}
 	
@@ -38,36 +38,37 @@ public class EmpleadoController {
 	@PostMapping("/guardarEmpleado")
 	public String guardarEmpleado(@Valid @ModelAttribute Empleado empleado, Errors errores, Model modelo, BindingResult resultado, RedirectAttributes atributos) {
 		// Sin verificacar estos errores pincha html
+		modelo.addAttribute("empleado", empleado);
+		modelo.addAttribute("puestos", PuestosEmpleados.values());	// Puestos de Enum
+		System.out.println("Errores al cargar el empleado");
 		if(errores.hasErrors()) {
-			modelo.addAttribute("empleado", empleado);
-			modelo.addAttribute("puestos", PuestosEmpleados.values());	// Puestos de Enum
-			System.out.println("Errores al cargar el empleado");
 			return "persona/cargaEmpleado";
 		}
 		String dni = empleado.getDocumento();
 		System.out.println("DNI solo numeros: " + dni.matches("[0-9]+"));
-		if(!empleado.getDocumento().matches("[0-9]+")) {
-			FieldError error = new FieldError("empleado", "documento", "El documento solo debe contener numeros.");
-			resultado.addError(error);
-		}
-		if(dni.length()>8 || dni.length()<7) {
-				FieldError error = new FieldError("empleado", "documento", "El documento debe tener entre 7 y 8 caracteres.");
-				resultado.addError(error);
-		}			
+//		if(!empleado.getDocumento().matches("[0-9]+")) {
+//			FieldError error = new FieldError("empleado", "documento", "El documento solo debe contener numeros.");
+//			resultado.addError(error);
+//		}
+//		if(dni.length()>8 || dni.length()<7) {
+//				FieldError error = new FieldError("empleado", "documento", "El documento debe tener entre 7 y 8 caracteres.");
+//				resultado.addError(error);
+//		}			
 		if(empleadoService.encontrarEmpleado(empleado) != null) {
 			FieldError error = new FieldError("empleado", "documento", "Ya existe un emleado con este documento.");
 			resultado.addError(error);
+			return "persona/cargaEmpleado";
 		}
 		
 		// Verifica si DNI también en tabla clientes: <SI> guarda solo campos en tabla "empleados" -- <NO> Guarda empleado normalmente.
 		// Como guardar: DNI y campos de empleado (activo + puesto) Solo en tabla "empleados" ? solo por Entity?
 		
-		if(resultado.hasErrors()) {
-			modelo.addAttribute("empleado", empleado);
-			modelo.addAttribute("puestos", PuestosEmpleados.values());	// Puestos de Enum
-			System.out.println(resultado);
-			return "persona/cargaEmpleado";
-		}
+//		if(resultado.hasErrors()) {
+//			modelo.addAttribute("empleado", empleado);
+//			modelo.addAttribute("puestos", PuestosEmpleados.values());	// Puestos de Enum
+//			System.out.println(resultado);
+//			return "persona/cargaEmpleado";
+//		}
 		
 		if(clienteService.encontrarCliente(empleado.getDocumento()) != null) {
 			var cliente = clienteService.encontrarCliente(empleado.getDocumento());

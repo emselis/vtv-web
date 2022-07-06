@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.web2.entities.Empleado;
+import com.web2.enumeraciones.PuestosEmpleados;
 import com.web2.repositories.EmpleadoRepository;
 
 @Service("empleadoService")
@@ -18,13 +19,11 @@ public class EmpleadoService {
 	@Qualifier("empleadoRepository")
 	private EmpleadoRepository empleadoRepository;
 	
-	@Transactional(readOnly = true)
 	public List<Empleado> listarEmpleados() {
 		// Cast -> List xq findAll devuelve Object
 		return (List<Empleado>) empleadoRepository.findAll();
 	}
 
-	@Transactional
 	public void guardarEmpleado(Empleado empleado) {
 		empleadoRepository.save(empleado);
 	}
@@ -37,12 +36,10 @@ public class EmpleadoService {
 		empleadoRepository.insertarEmpl(documento, puesto, estado);
 	}
 	
-	@Transactional
 	public void eliminarEmpleado(Empleado empleado) {
 		empleadoRepository.delete(empleado);
 	}
 
-	@Transactional(readOnly = true)
 	public Empleado encontrarEmpleado(Empleado empleado) {
 		//findById devuelve objeto "Opcional", entonces:
 		//Lanzamos excepción con método .orElseThrow o mostramos null con .orElse
@@ -50,7 +47,7 @@ public class EmpleadoService {
 	}	
 
 	public List<Empleado> empleadosEstadoPuesto(
-			@Param("estado") String estado, @Param("puesto") String puesto){
+			@Param("estado") String estado, @Param("puesto") PuestosEmpleados puesto){
 		return (List<Empleado>) empleadoRepository.empleadosEstadoPuesto(estado, puesto);
 	}
 	

@@ -2,13 +2,13 @@ package com.web2.controllers;
 
 import java.time.LocalDate;
 
-
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.web2.entities.*;
+import com.web2.enumeraciones.*;
 import com.web2.services.*;
 
 @Controller
@@ -24,25 +24,39 @@ public class InspeccionController {
 	private EmpleadoService empleadoService;
 
 	@Autowired
-	private ClienteService clienteService;
-
-	@Autowired
 	private AutoService autoService;
+	
+	
+//	--------	Genera Estado de Inspección		--------
+	public String generaEstadoInspeccion(Inspeccion inspeccion) {
+		var tiposDeEstados = EstadosInspeccion.values();
+		String estado;
+		if(inspeccion.getVisuales().equals(inspeccion.getMedibles())) {
+			if(inspeccion.getVisuales().equals("PASO")) {
+				estado= tiposDeEstados[0].name();
+			}else {
+				estado= tiposDeEstados[2].name();
+			}
+		}else {
+			estado= tiposDeEstados[1].name();
+		}
+		return estado;
+	}
+	
+	
 
 	@GetMapping("/iniciaInspeccion")
 	public String muestraInspectores(Model modelo, Inspeccion inspeccion) {
 
-		var empleados = empleadoService.empleadosEstadoPuesto("ALTA", "INSPECTOR");
+		var empleados = empleadoService.empleadosEstadoPuesto("ALTA", PuestosEmpleados.valueOf("INSPECTOR"));
 		modelo.addAttribute("empleados", empleados);
 		return "inspecciones/asignaInspector";
 	}
 
 	@PostMapping("/asignaInspector")
 	public String asignaInspector(Model modelo, Inspeccion inspeccion) {
-//		System.out.println(inspeccion.getInspector());
 		var autos = autoService.listarAutos();
 		modelo.addAttribute("autos", autos);
-//		System.out.println(inspeccion);
 
 		return "inspecciones/asignaAuto";
 	}
@@ -50,7 +64,6 @@ public class InspeccionController {
 	@PostMapping("/asignaAuto")
 	public String asignaPropietario(Model modelo, Inspeccion inspeccion) {
 
-//		System.out.println(inspeccion);
 		return "inspecciones/cargaInspeccion";
 	}
 
@@ -77,30 +90,22 @@ public class InspeccionController {
 		inspeccion.setFecha(fechaHoy);
 		System.out.println(inspeccion);
 
-		if(inspeccion.getVisuales().equals(inspeccion.getMedibles())) {
-			System.out.println(inspeccion.getVisuales());
-			System.out.println(inspeccion.getMedibles());
-			if(inspeccion.getVisuales().equals("PASO")) {
-				inspeccion.setEstado("APTO");
-			}else {
-				inspeccion.setEstado("RECHAZADO");
-			}
-		}else {
-			inspeccion.setEstado("CONDICIONAL");
-		}
+		inspeccion.setEstado(generaEstadoInspeccion(inspeccion));
 		
-//		var empleado = inspeccion.getInspector();
-//		var auto = inspeccion.getAuto();
-//		var propietario = auto.getPropietario();		
-//
-//		System.out.println("Entró a guardar");
-//		System.out.println(fechaHoy);
-//		System.out.println(empleado);
-//		System.out.println(auto);
-//		System.out.println(propietario);
+//		if(inspeccion.getVisuales().equals(inspeccion.getMedibles())) {
+//			System.out.println(inspeccion.getVisuales());
+//			System.out.println(inspeccion.getMedibles());
+//			if(inspeccion.getVisuales().equals("PASO")) {
+//				inspeccion.setEstado("APTO");
+//			}else {
+//				inspeccion.setEstado("RECHAZADO");
+//			}
+//		}else {
+//			inspeccion.setEstado("CONDICIONAL");
+//		}
+		
 		try {
 		inspeccionService.guardarInspeccion(inspeccion);
-//			inspeccion= inspeccionService.encontrarInspeccion(inspeccion);
 		} catch (Exception e) {
 			System.out.println("Eror al guardar la Inspección: " + e);
 			

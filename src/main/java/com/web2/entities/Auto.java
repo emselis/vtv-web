@@ -39,9 +39,30 @@ public class Auto implements Serializable{
 	private String estado = "SIN VERIFICAR";
 	
 	private LocalDate ultimaVerificacion;
+
+	public Auto() {}
+	
+	public Auto(@Size(min = 6, max = 7, message = "El dominio debe tener entre 6 y 7 dígitos.") String dominio,
+			Marca marca, Modelo modelo, Version version, Cliente propietario, String estado,
+			LocalDate ultimaVerificacion) {
+		super();
+		this.dominio = dominio;
+		this.marca = marca;
+		this.modelo = modelo;
+		this.version = version;
+		this.propietario = propietario;
+		this.estado = estado;
+		this.ultimaVerificacion = ultimaVerificacion;
+	}
+	
+	
+
 	
 	
 	
+}
+
+
 //	@OneToMany(mappedBy = "idMarca")
 //	private List<Marca> marcas;
 //	
@@ -51,26 +72,4 @@ public class Auto implements Serializable{
 //	@OneToMany(mappedBy = "idVersion")
 //	private List<Version> versiones;
 
-}
 
-
-
-
-
-//	protected Persona () {}
-//	
-//	protected Persona(long documento, String nombre, String apellido) {
-//		super();
-//		this.documento = documento;
-//		this.nombre = nombre;
-//		this.apellido = apellido;
-//	}	
-
-//	protected Persona(@NotEmpty(message = "Debe ingrese el documento") @Size(min = 7, max = 8) long documento,
-//			@NotEmpty(message = "Debe ingrese el nombre") @Size(min = 2, max = 30) String nombre,
-//			@NotEmpty(message = "Debe ingrese el apellido") @Size(min = 2, max = 30) String apellido) {
-//		super();
-//		this.documento = documento;
-//		this.nombre = nombre;
-//		this.apellido = apellido;
-//	}

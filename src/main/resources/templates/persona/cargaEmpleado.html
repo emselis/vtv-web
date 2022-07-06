@@ -24,22 +24,23 @@
 				<!-- <fieldset> -->
 					<div class="campo">
 						<label for="documento">N° Documento</label>
-						<input type="number" id="documento" th:name="documento" placeholder="Nro. documento" th:field="*{documento}" />
+						<input required maxlength="8" minlength="7" pattern="[0-9]+" title="Debe ingresar entre 7 y 8 caracteres numéricos." 
+						type="text" id="documento" th:name="documento" placeholder="Nro. documento" th:field="*{documento}" />
 						<span th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}">Error Documento</span>
 					</div>
-					<!-- <input type="button" nema="next" class="btn btn-primario" value="Siguiente" />
+					<!-- <input required type="button" nema="next" class="btn btn-primario" value="Siguiente" />
 				</fieldset> -->
 
 				<!-- <fieldset> -->
 					<div class="campo">
 						<label for="nombre">Nombre</label>
-						<input type="text" id="nombre" th:name="nombre" name="nombre" placeholder="Nombre"
+						<input required maxlength="30" minlength="2" type="text" id="nombre" th:name="nombre" name="nombre" placeholder="Nombre"
 							th:field="*{nombre}" />
 						<span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error Nombre</span>
 					</div>
 					<div class="campo">
 						<label for="apellido">Apellido</label>
-						<input type="text" id="apellido" th:name="apellido" name="apellido" placeholder="Apellidos"
+						<input required maxlength="30" minlength="2" type="text" id="apellido" th:name="apellido" name="apellido" placeholder="Apellidos"
 							th:field="*{apellido}" />
 						<span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Error Apellido</span>
 					</div>
@@ -56,13 +57,13 @@
 							<option value="BAJA">NO</option>
 						</select>
 					</div>
-					<!-- <input type="button" nema="previous" class="btn btn-primario" value="Anterior" />
-					<input type="button" nema="next" class="btn btn-primario" value="Siguiente" />
+					<!-- <input required type="button" nema="previous" class="btn btn-primario" value="Anterior" />
+					<input required type="button" nema="next" class="btn btn-primario" value="Siguiente" />
 				</fieldset> -->
 
 				<!-- <fieldset> -->
 					<div class="campo enviar">
-						<input type="submit" value="Enviar" class="btn btn-primario">
+						<input required type="submit" value="Enviar" class="btn btn-primario">
 					</div>
 				<!-- </fieldset> -->
 			</form>

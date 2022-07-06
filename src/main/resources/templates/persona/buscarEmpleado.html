@@ -21,7 +21,7 @@
 			<form th:action="@{/encontrarEmpleado}" method="get" th:object="${empleado}"> 
 				<div class="campo">
 					<label for="documento">N° Documento</label>
-					<input type="number" placeholder="Documento" id="documento" name="documento" th:field="*{documento}" />
+					<input type="text" placeholder="Documento" id="documento" name="documento" th:field="*{documento}" />
 					<span th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}">Error Documento</span>
 				</div>
 				<div class="campo enviar">

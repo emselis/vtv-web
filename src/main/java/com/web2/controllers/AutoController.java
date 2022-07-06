@@ -2,18 +2,14 @@ package com.web2.controllers;
 
 import javax.validation.Valid;
 
-import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.*;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web2.entities.Auto;
 import com.web2.entities.Cliente;
-import com.web2.entities.Empleado;
-import com.web2.enumeraciones.PuestosEmpleados;
 import com.web2.services.AutoService;
 import com.web2.services.ClienteService;
 import com.web2.services.MarcaService;
@@ -43,7 +39,7 @@ public class AutoController {
 	@Autowired
 	private ClienteService clienteService;
 
-	private boolean validarDominio(String patente) {
+	public boolean validarDominio(String patente) {
 
 		boolean control = true;
 		int cantidad = patente.length();

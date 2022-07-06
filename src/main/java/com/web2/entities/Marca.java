@@ -10,7 +10,6 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "marcas")
-//@PrimaryKeyJoinColumn(referencedColumnName = "idMarca")
 public class Marca implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -20,9 +19,20 @@ public class Marca implements Serializable{
 	private int idMarca;
 	
 	private String marca;
+
+	public Marca() {}
 	
+	public Marca(int idMarca, String marca) {
+		super();
+		this.idMarca = idMarca;
+		this.marca = marca;
+	}
+
+	
+	
+	
+}
 
 //	@OneToMany(mappedBy = "marca")
 //	private List<Modelo> modelos;
 	
-}

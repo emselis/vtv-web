@@ -6,10 +6,14 @@ import static org.mockito.Mockito.*;
 import java.util.*;
 
 import org.junit.jupiter.api.*;
+import org.mockito.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.web2.controllers.*;
 import com.web2.entities.*;
+import com.web2.enumeraciones.PuestosEmpleados;
 import com.web2.repositories.*;
 import com.web2.services.*;
 
@@ -63,28 +67,39 @@ class Web2ThymeleafApplicationTests {
 		Assertions.assertEquals(estadosEsperados, estadosReales);
 	}
 
-	
-	
-//	--------------------------------------------------------	Mockito		AUTO
+//	--------------------------------------------------------------------------------
+//											MOCKITO
+//	--------------------------------------------------------------------------------
 
-//	AutoRepository autoRepository;
-//	AutoService autoService;
-//
-//	@BeforeEach
-//	void setUp() {
-//		AutoRepository autoRepository = mock(AutoRepository.class);
-//		autoService = new AutoService(autoRepository);
-//	}
+//	@Mock		// Annotation Mockito
+	@MockBean // Annotation Spring
+	AutoRepository autoRepository;
+
+	@MockBean
+	EmpleadoRepository empleadoRepository;
+
+	@MockBean
+	ClienteRepository clienteRepository;
+	
+	
+//	@InjectMocks	// Annotation Mockito
+	@Autowired // Annotation Spring
+	AutoService autoService;
+
+	@Autowired
+	EmpleadoService empleadoService;
+
+	@Autowired
+	ClienteService clienteService;
+	
+//	--------------------------------------------------------	AUTO
 
 	@Disabled
 	@Test
 	void encuentraAutoDominio() {
 
-		AutoRepository autoRepository = mock(AutoRepository.class);
-		AutoService autoService = new AutoService(autoRepository);
-		
-		when(autoRepository.findById("AB132CC").orElse(null)).thenReturn(Datos.auto1);
-		when(autoRepository.findById("EFG456").orElse(null)).thenReturn(Datos.auto2);
+		when(autoRepository.findById("AB132CC").orElse(Datos.auto2)).thenReturn(Datos.auto1);
+		when(autoRepository.findById("EFG456").orElse(Datos.auto3)).thenReturn(Datos.auto2);
 
 		Auto autoA = autoService.buscarPorDominio("AB123CC");
 		Auto autoB = autoService.buscarPorDominio("EFG456");
@@ -93,50 +108,101 @@ class Web2ThymeleafApplicationTests {
 		assertEquals("FIAT", autoB.getMarca());
 
 	}
-	
+
 	@Test
 	void encuentraAutoEstado() {
 
-		AutoRepository autoRepository = mock(AutoRepository.class);
-		AutoService autoService = new AutoService(autoRepository);
-		
 		when(autoRepository.findByEstado("SIN VERIFICAR")).thenReturn(Datos.autosSegunEstado);
 
 		List<Auto> autosEst = autoService.buscarPorEstado("SIN VERIFICAR");
 		assertEquals("AB123CD", autosEst.get(0).getDominio());
 		assertEquals("FIAT", autosEst.get(1).getMarca().getMarca());
-		verify(autoRepository, times(1)).findByEstado("SIN VERIFICAR");	// default times=1
+		verify(autoRepository, times(1)).findByEstado("SIN VERIFICAR"); // default times=1
 
 	}
-	
+
 	@Test
 	void encuentraAutoDuenio() {
 
-		AutoRepository autoRepository = mock(AutoRepository.class);
-		AutoService autoService = new AutoService(autoRepository);
-		
 		when(autoRepository.findByPropietario(Datos.duenio12.getDocumento())).thenReturn(Datos.autosSegunDuenio);
 
 		List<Auto> autosDue = autoService.buscarPorPropietario("29191555");
 
-		assertAll( () -> {
-			assertEquals(Datos.duenio12.getDocumento(), "29191555");
-		},
-		() -> {
+		assertAll(() -> {
+			assertEquals("29191555", Datos.duenio12.getDocumento());
+		}, () -> {
 			assertEquals("AGILE", autosDue.get(0).getModelo().getModelo());
-		},
-		() -> {
+		}, () -> {
 			assertEquals("CLASSIC", autosDue.get(1).getModelo().getModelo());
-		},
-		() -> {
+		}, () -> {
 			assertEquals("Eze", autosDue.get(0).getPropietario().getNombre());
-		},
-		() -> {
+		}, () -> {
 			assertEquals(1, autosDue.get(1).getModelo().getIdModelo());
 		});
 	}
 
+//	--------------------------------------------------------	Empleados	
+
+	@Test
+	void listarEmpleados() {
+
+		when(empleadoRepository.findAll()).thenReturn(Datos.empleadosTodos);
+
+		List<Empleado> listaEmpl = empleadoService.listarEmpleados();
+
+		assertAll(() -> {
+			assertEquals("29222333", listaEmpl.get(0).getDocumento());
+		}, () -> {
+			assertEquals("Damian", listaEmpl.get(1).getNombre());
+		}, () -> {
+			assertEquals("ALTA", listaEmpl.get(1).getEstado());
+		}, () -> {
+			assertEquals(PuestosEmpleados.GERENTE, listaEmpl.get(2).getPuesto());
+		}, () -> {
+			assertEquals("Marco", listaEmpl.get(2).getApellido());
+		});
+	}
 	
-//	--------------------------------------------------------	Mockito		Empleado	
+	@Test
+	void empleadosPorEstadoPuesto() {
+		when(empleadoRepository.findByEstadoPuesto("ALTA", PuestosEmpleados.INSPECTOR)).thenReturn(Datos.empleadosInspAlta);
+
+		List<Empleado> listaEmpl = empleadoService.empleadosEstadoPuesto("ALTA", PuestosEmpleados.INSPECTOR);
+		
+		assertAll(() -> {
+			assertEquals("29222333", listaEmpl.get(0).getDocumento());
+		}, () -> {
+			assertEquals("Damian", listaEmpl.get(1).getNombre());
+		}, () -> {
+			assertEquals("ALTA", listaEmpl.get(1).getEstado());
+		}, () -> {
+			assertEquals(PuestosEmpleados.INSPECTOR, listaEmpl.get(0).getPuesto());
+		}, () -> {
+			assertEquals("Loss", listaEmpl.get(0).getApellido());
+		});
+	}
+
 	
+//	--------------------------------------------------------	Clientes	
+
+	@Test
+	void listarClientes() {
+
+		when(clienteRepository.findAll()).thenReturn(Datos.clientesTodos);
+
+		List<Cliente> listaClient = clienteService.listarClientes();
+
+		assertAll(() -> {
+			assertEquals("29191555", listaClient.get(0).getDocumento());
+		}, () -> {
+			assertEquals("Pablo", listaClient.get(1).getNombre());
+		}, () -> {
+			assertEquals("SI", listaClient.get(1).getExento());
+		}, () -> {
+			assertEquals("Ro", listaClient.get(2).getApellido());
+		}, () -> {
+			assertEquals("NO", listaClient.get(2).getExento());
+		});
+	}
+
 }

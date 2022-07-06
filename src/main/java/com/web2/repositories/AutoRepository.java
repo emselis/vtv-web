@@ -24,6 +24,9 @@ public interface AutoRepository extends JpaRepository<Auto, String> {
 	// SOLO PARA TEST
 	public abstract List<Auto> findByPropietario(String documento);
 	
-		
+	
+	long count();                        
+
+	boolean existsById(String Dominio);   	
 	
 }

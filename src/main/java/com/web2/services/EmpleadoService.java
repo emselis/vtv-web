@@ -48,7 +48,7 @@ public class EmpleadoService {
 
 	public List<Empleado> empleadosEstadoPuesto(
 			@Param("estado") String estado, @Param("puesto") PuestosEmpleados puesto){
-		return (List<Empleado>) empleadoRepository.empleadosEstadoPuesto(estado, puesto);
+		return (List<Empleado>) empleadoRepository.findByEstadoPuesto(estado, puesto);
 	}
 	
 	

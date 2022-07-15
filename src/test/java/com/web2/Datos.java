@@ -25,12 +25,12 @@ public class Datos {
 			new Cliente("29191555", "Eze", "Sel", "SI"),
 			"APTO", LocalDate.now());
 	
-	public static final Auto auto3 = new Auto("CD111YZ", new Marca(2,"FIAT"),
+	public static Auto auto3 = new Auto("CD111YZ", new Marca(2,"FIAT"),
 			new Modelo(5, "CRONOS"), new Version(1, "'4P 1,8 HGT PACK"),
 			new Cliente("15666777", "Pablo", "Torres", "SI"),
 			"SIN VERIFICAR", LocalDate.now());
 
-	public static final Auto auto4 = new Auto("EFG456", new Marca(2,"FIAT"),
+	public static Auto auto4 = new Auto("EFG456", new Marca(2,"FIAT"),
 			new Modelo(5, "CRONOS"), new Version(1, "'4P 1,8 HGT PACK"),
 			new Cliente("3288299", "Cecilia", "Ro", "NO"),
 			"APTO", LocalDate.now());
@@ -46,17 +46,17 @@ public class Datos {
 
 
 //	-------------- Clientes --------------
-	public static final Cliente duenio12 = new Cliente("29191555", "Eze", "Sel", "SI");
-	public static final Cliente duenio3 = new Cliente("15666777", "Pablo", "Torres", "SI");
-	public static final Cliente duenio4 = new Cliente("3288299", "Cecilia", "Ro", "NO");
+	public static Cliente duenio12 = new Cliente("29191555", "Eze", "Sel", "SI");
+	public static Cliente duenio3 = new Cliente("15666777", "Pablo", "Torres", "SI");
+	public static Cliente duenio4 = new Cliente("3288299", "Cecilia", "Ro", "NO");
 
 	public static final List<Cliente> clientesTodos = new ArrayList<Cliente>(Arrays.asList(duenio12, duenio3, duenio4));
 
 	
 //	-------------- Empleados --------------
-	public static final Empleado empleado1 = new Empleado("29222333", "Miguel", "Loss", PuestosEmpleados.INSPECTOR , "ALTA");
-	public static final Empleado empleado2 = new Empleado("12345678", "Damian", "Fari", PuestosEmpleados.INSPECTOR, "ALTA");
-	public static final Empleado empleado3 = new Empleado("32001122", "Lorena", "Marco", PuestosEmpleados.GERENTE, "ALTA");
+	public static Empleado empleado1 = new Empleado("29222333", "Miguel", "Loss", PuestosEmpleados.INSPECTOR , "ALTA");
+	public static Empleado empleado2 = new Empleado("12345678", "Damian", "Fari", PuestosEmpleados.INSPECTOR, "ALTA");
+	public static Empleado empleado3 = new Empleado("32001122", "Lorena", "Marco", PuestosEmpleados.GERENTE, "ALTA");
 
 	public static final List<Empleado> empleadosTodos = new ArrayList<Empleado>(Arrays.asList(empleado1, empleado2, empleado3));
 	public static final List<Empleado> empleadosInspAlta = new ArrayList<Empleado>(Arrays.asList(empleado1, empleado2));

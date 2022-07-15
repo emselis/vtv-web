@@ -98,8 +98,9 @@ class Web2ThymeleafApplicationTests {
 	@Test
 	void encuentraAutoDominio() {
 
-		when(autoRepository.findById("AB132CC").orElse(Datos.auto2)).thenReturn(Datos.auto1);
-		when(autoRepository.findById("EFG456").orElse(Datos.auto3)).thenReturn(Datos.auto2);
+		// TODO -> Definir estas dos lineas como Opcional<>
+		when(autoRepository.findById("AB132CC")).thenReturn(Datos.auto1);
+		when(autoRepository.findById("EFG456")).thenReturn(Datos.auto2);
 
 		Auto autoA = autoService.buscarPorDominio("AB123CC");
 		Auto autoB = autoService.buscarPorDominio("EFG456");
